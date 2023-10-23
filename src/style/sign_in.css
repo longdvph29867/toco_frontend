@@ -1,0 +1,81 @@
+body{
+    font-family: 'Barlow', sans-serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.background{
+    background-image: url('https://tocotocotea.com.vn/wp-content/themes/tocotocotea/assets/images/north_background_login_desktop.png');
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+}
+
+.coating{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-sign-in{
+    text-align: center;
+    width: 500px;
+    padding: 20px 100px;
+    background-color:#ffffff;
+    border-radius: 8px;
+}
+.form-logo img{
+    width: 200px;
+}
+.form{
+    margin-top: 20px;
+}
+.form input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+.forgot-password{
+    text-align: right;
+    margin: 20px 0;
+}
+.forgot-password a {
+    text-decoration: none;
+    color: #d4b774;
+    font-weight: 600;
+}
+.btn-sign-in button{
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #d8b979;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.link-create{
+    margin: 20px 0;
+}
+.link-create a{
+    text-decoration: none;
+    color: #d4b774;
+    font-weight: 600;
+}
+.back-home{
+    margin: 20px 0;
+}
+.back-home a {
+    text-decoration: none;
+    color: #007bff;
+}

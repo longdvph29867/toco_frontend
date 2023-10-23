@@ -1,0 +1,34 @@
+body{
+    font-family: 'Barlow', sans-serif;
+}
+.box-left-cate{
+    width: 25%;
+    padding: 0 20px;
+    box-shadow: 0 2px 7px 0px rgba(0,0,0,0.1);
+}
+.title-cate h2{
+    font-size: 14px;
+    text-transform: uppercase;
+    
+    font-weight:bold;
+    padding:10px 15px;
+}
+.list-cate{
+    list-style: none;
+    padding: 0;
+}
+.item-cate a{
+    border-bottom: 1px solid #f1f1f1;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    padding:10px;
+    font-size: 14px;
+}
+.none-border-cate a{
+    border:none;
+}
+.item-cate span{
+    color: #8a733f;
+}
