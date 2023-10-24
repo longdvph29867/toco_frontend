@@ -1,0 +1,32 @@
+@font-face {
+    font-family: BalooExtra;
+    src: url(../assets/fonts/baloo2/Baloo2-ExtraBold.ttf);
+}
+@font-face {
+    font-family: Muli;
+    src: url(../assets/fonts/mulish/Mulish-Regular.ttf);
+}
+@font-face {
+    font-family: Barlow;
+    src: url(../assets/fonts/barlow/Barlow-Regular.ttf);
+}
+@font-face {
+    font-family: MuliExtraBold;
+    src: url(../assets/fonts/mulish/Mulish-ExtraBold.ttf);
+}
+@font-face {
+    font-family: MuliBlack;
+    src: url(../assets/fonts/mulish/Mulish-Black.ttf);
+}
+@font-face {
+    font-family: MuliBold;
+    src: url(../assets/fonts/mulish/Mulish-Bold.ttf);
+}
+@font-face {
+    font-family: MuliSemiBold;
+    src: url(../assets/fonts/mulish/Mulish-SemiBold.ttf);
+}
+@font-face {
+    font-family: Muli-Variable;
+    src: url(../assets/fonts/Mulish-VariableFont_wght.ttf);
+}
