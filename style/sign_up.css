@@ -1,17 +1,12 @@
-body{
-    font-family: 'Barlow', sans-serif;
-}
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+
 .background{
     background-image: url('https://tocotocotea.com.vn/wp-content/themes/tocotocotea/assets/images/north_background_login_desktop.png');
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     background-size: cover;
+    font-family: 'Barlow', sans-serif;
+
 }
 
 .coating{
@@ -28,9 +23,13 @@ body{
 .form-sign-up{
     text-align: center;
     width: 500px;
-    padding: 20px 100px;
+    padding: 40px 100px 130px;
     background-color:#ffffff;
     border-radius: 8px;
+    background-image: url(/images/views/register_form_img.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 .form-logo img{
     width: 200px;
@@ -77,7 +76,7 @@ body{
     .form-sign-up{
         width: 80%;
         font-size: 12px;
-        padding: 20px 30px;
+        padding: 40px 30px 90px;
     }
     .form-logo img{
         width: 80%;
