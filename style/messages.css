@@ -1,0 +1,120 @@
+#toast {
+    visibility: hidden;
+    max-width: 40px;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right:0;
+    top: 80px;
+    font-size: 16px;
+    white-space: nowrap;
+
+
+}
+#toast.style-error {
+    /* color: #cf1322;
+    background: #fff1f0;
+    border: 1px solid #ffa39e; */
+    background: #fff;
+    color: #e74a3b;
+    border: 1px solid #e74a3b;
+
+}
+#toast.style-error #img svg:nth-child(1) {
+    display: none;
+}
+
+#toast.style-success {
+    /* color: #389e0d;
+    background: #f6ffed;
+    border: 1px solid #b7eb8f; */
+    background: #fff;
+    color: #1cc88a;
+    border: 1px solid #1cc88a;
+}
+#toast.style-success #img svg:nth-child(2) {
+    display: none;
+}
+
+#toast #img{
+	width: 38px;
+	height: 100%;
+    float: left;
+    border-radius: 50%;
+    box-sizing: border-box;
+    line-height: 38px;
+    font-size: 26px;
+}
+#toast #desc{
+    line-height: 40px;
+    margin: 0 16px;
+    height: 100%;
+    overflow: hidden;
+	white-space: nowrap;
+}
+#toast #img svg {
+    margin-top: 6px;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+/* @-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 30px; opacity: 1;}
+} */
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 80px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 80px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 80px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 80px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
