@@ -37,7 +37,7 @@ body {
     z-index: 100;
     cursor: pointer;
   }
-  ==========================
+
   .delivery img {
     transition: all 0.5s;
     animation: ring 1.5s infinite;

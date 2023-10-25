@@ -73,3 +73,16 @@ body{
     text-decoration: none;
     color: #007bff;
 }
+@media screen and (max-width: 510px){
+    .form-sign-up{
+        width: 80%;
+        font-size: 12px;
+        padding: 20px 30px;
+    }
+    .form-logo img{
+        width: 80%;
+    }
+    .btn-sign-up button{
+        height: 32px;
+    }
+}
