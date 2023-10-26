@@ -1,5 +1,44 @@
+import { localUserService } from "../../service/localService";
+import { authService } from "../../service/viewsService";
+import { router, showMesssage, useEffect } from "../../utilities/lib";
+import { required } from "../../validations/viewsValidation";
 
 export default function LoginPage() {
+
+  useEffect(() => {
+    const formLogin = document.getElementById('login-form');
+    formLogin.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(formLogin);
+      const account = formData.get('account')
+      const password = formData.get('password')
+      
+      const data = {
+        account,
+        password
+      }
+      let isValid = required(account, 'error-account')
+      isValid &= required(password, 'error-password')
+      if(isValid) {
+        authService.postLogin(data)
+        .then((res) => {
+          // console.log(res.data);
+          const userInfo = {...res.data.data, accessToken: res.data. accessToken}
+          localUserService.set(userInfo)
+          showMesssage(true, res.data.message)
+          router.navigate('/register')
+          // router.navigate('/login')
+        })
+        .catch((err) => {
+          console.log(err);
+          // showMesssage(false, err.response.data.message)
+          showMesssage(false, 'Tài khoản hoặc mật khẩu không đúng!')
+        });
+      }
+    })
+    
+  }, [])
+
   return /*html*/`
   <div>
     <div class="background">
@@ -8,24 +47,21 @@ export default function LoginPage() {
           <div class="form-logo">
             <img src="https://tocotocotea.com.vn/wp-content/themes/tocotocotea/assets/images/logo.png" alt="">
           </div>
-          <form action="" class="form">
+          <form action="" class="form" id="login-form">
             <div>
               <label for="">
-                <input type="text" placeholder="Nhập số điện thoại của bạn">
+                <input type="text" name="account" id="account" placeholder="Nhập tài khoản">
               </label>
+              <span id="error-account" class=error-el></span>
             </div>
             <div>
               <label for="">
-                <input type="text" placeholder="Nhập mật khẩu của bạn">
+                <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
               </label>
-            </div>
-            <div>
-              <label for="">
-                <input type="text" placeholder="Nhập lại mật khẩu của bạn">
-              </label>
+              <span id="error-password" class=error-el></span>
             </div>
             <div class="btn-sign-up">
-              <button>Đăng nhập</button>
+              <button>Đăng Nhập</button>
             </div>
           </form>
           <div class="link-login">

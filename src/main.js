@@ -1,6 +1,7 @@
 import '../style.css'
 import '../style/messages.css'
 import '../style/sign_up.css'
+import CartPage from './pages/views/CartPage';
 
 import Demo from './pages/views/Demo';
 import LoginPage from './pages/views/LoginPage';
@@ -18,6 +19,9 @@ router.on('/login', function () {
 });
 router.on('/register', function () {
   render( RegisterPage, container);
+});
+router.on('/cart', function () {
+  render( CartPage, container);
 });
 
 

@@ -12,8 +12,7 @@
     top: 80px;
     font-size: 16px;
     white-space: nowrap;
-
-
+    font-family: 'Barlow', sans-serif;
 }
 #toast.style-error {
     /* color: #cf1322;
