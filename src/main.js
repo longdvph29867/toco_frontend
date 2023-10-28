@@ -24,6 +24,50 @@ router.on('/cart', function () {
   render( CartPage, container);
 });
 
+// categories
+router.on('/admin/categories', function () {
+  render( CartPage, container);
+});
+router.on('/admin/categories', function () {
+  render( CartPage, container);
+});
+router.on('/admin/categories', function () {
+  render( CartPage, container);
+});
+
+// products
+router.on('/admin/products', function () {
+  render( CartPage, container);
+});
+router.on('/admin/products', function () {
+  render( CartPage, container);
+});
+router.on('/admin/products', function () {
+  render( CartPage, container);
+});
+
+// users
+router.on('/admin/users', function () {
+  render( CartPage, container);
+});
+router.on('/admin/users', function () {
+  render( CartPage, container);
+});
+router.on('/admin/users', function () {
+  render( CartPage, container);
+});
+
+// toppings
+router.on('/admin/toppings', function () {
+  render( CartPage, container);
+});
+router.on('/admin/toppings', function () {
+  render( CartPage, container);
+});
+router.on('/admin/toppings', function () {
+  render( CartPage, container);
+});
+
 
 
 

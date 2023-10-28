@@ -6,13 +6,17 @@ export default function Demo() {
     viewsService.getCatagories()
     .then((res) => {
       console.log(res);
+      showMesssage(true, "thanh cong")
+
     })
     .catch((err) => {
       console.log(err);
+      showMesssage(false, "ERR")
+
     });
 
     document.querySelector('button').addEventListener('click', function() {
-      showMesssage(true, "thanh cong")
+      showMesssage(false, "thanh cong")
     })
   },[])
   return /*html*/`
