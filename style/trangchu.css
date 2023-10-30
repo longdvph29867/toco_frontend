@@ -425,12 +425,16 @@ body {
     transform: translateY(-0.2rem);
   }
   .cardItem-info h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-transform: capitalize;
     color: var(--black-color-p);
     font-size: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+   
   }
   
   .cardItem-info {
