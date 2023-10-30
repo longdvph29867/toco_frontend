@@ -1,8 +1,7 @@
-import { products } from '../../../../db.json' assert {type: 'json'}
 
 const BestSelling = () => {
   return /*html*/`
-    ${products.map((product) => {
+    ${[].map((product) => {
       return /*html*/`
       <li class="item-product-sale">
                   <img src="${product.images?.[0]}" alt="">

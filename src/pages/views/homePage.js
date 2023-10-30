@@ -1,11 +1,11 @@
-import Footer from "../components/footer"
-import Header from "../components/header"
+import Footer from "../../components/footer"
+import Header from "../../components/header"
 import {useState, useEffect} from '../../utilities/lib'
-import OutstandingPro from "../components/outstanding_pro"
-import Slider from "../components/Slider"
-import Franchise from "../components/franchise"
-import Story from "../components/story"
-import News from "../components/news"
+import OutstandingPro from "../../components/outstanding_pro"
+import Slider from "../../components/Slider"
+import Franchise from "../../components/franchise"
+import Story from "../../components/story"
+import News from "../../components/news"
 
 const HomePage = () => {
   let [books,setBook]=useState([])

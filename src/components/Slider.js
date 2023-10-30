@@ -1,4 +1,4 @@
-import { useEffect } from "../../utilities/lib";
+import { useEffect } from "../utilities/lib";
 
 const Slider = () => {
     useEffect(() =>{

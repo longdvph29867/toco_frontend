@@ -1,4 +1,4 @@
-import { useEffect } from "../../utilities/lib"
+import { useEffect } from "../utilities/lib"
 
 // component header
 const Header = () => {

@@ -1,8 +1,8 @@
 import "../../../style/product-detail.css"
 import {useState, useEffect} from '../../utilities/lib'
-import BestSelling from "../components/detail/best_selling";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import BestSelling from "../../components/detail/best_selling";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
 
 const ProductDetail = (slug) => {
     const [book,setBook]=useState({})
