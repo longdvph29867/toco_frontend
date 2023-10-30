@@ -1,7 +1,7 @@
 import { useEffect } from "../utilities/lib";
 
 // component header
-const Header = () => {
+const Header = (action = false) => {
     
     useEffect(() => {
         //fetch categories
@@ -11,36 +11,38 @@ const Header = () => {
 
     useEffect(() => {
         // header
-    window.onscroll = () => {
-    if (window.scrollY > 0) {
-        document.querySelector("#nav").classList.add("fixed");
-    } else {
-        document.querySelector("#nav").classList.remove("fixed");
-    }
-    };
+        if(action) {
+            window.onscroll = () => {
+                if (window.scrollY > 0) {
+                    document.querySelector("#nav").classList.add("fixed");
+                } else {
+                    document.querySelector("#nav").classList.remove("fixed");
+                }
+            };
+        }
     });
 return /*html*/ `
     <a href="tel:+84962013495" class="delivery">
         <img src="../../public/images/views/delivery.png" alt="" />
     </a>
     <div id="header">
-        <section id="nav">
+        <section id="nav" class="${action ? '' : 'fixed'}">
             <a id="header_logo" href="/">
                 <img src="../../public/images/views/logo.png" alt="" />
             </a>
             <ul class="main-menu" id="header__navbar-modal">
                 <li class="center">
-                    <a href="TrangChu.html" class="navbar__link">Trang chủ</a>
+                    <a href="/" class="navbar__link">Trang chủ</a>
                 </li>
                 <li>
-                    <a href="LichSuVaSuMenh.html" class="navbar__link">Giới
+                    <a href="#" class="navbar__link">Giới
                         thiệu <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="LichSuVaSuMenh.html">Lịch sử và sứ mệnh</a>
+                            <a href="#">Lịch sử và sứ mệnh</a>
                         </li>
                         <li>
-                            <a href="ThanhTuuDatDuoc.html">Thành tựu đạt
+                            <a href="#">Thành tựu đạt
                                 được</a>
                         </li>
                     </ul>

@@ -1,17 +1,24 @@
 import { cartService } from "../../service/viewsService"
-import { showMesssage, useEffect, useState } from "../../utilities/lib"
+import { showMesssage, showSpinner, useEffect, useState } from "../../utilities/lib"
 import '../../../style/cart.css'
 import { localUserService } from "../../service/localService"
+import Spinner from "../../components/spinner"
+import Header from "../../components/header"
 export default function CartPage() {
   const [listCarts, setListCarts] = useState([])
   useEffect( () => {
     const { account } = localUserService.get()
+    showSpinner(true)
     cartService.getCartByAccount(account)
     .then((res) => {
       // console.log(res.data);
+    showSpinner(false)
+
       setListCarts(res.data.data)
     })
     .catch((err) => {
+    showSpinner(false)
+
       console.log(err);
     });
   },[])
@@ -19,6 +26,7 @@ export default function CartPage() {
   
 
   return /*html*/`
+    ${Header()}
     <div class="cart-container">
       <div class="cart-header">
         <div class="cart-content">
@@ -81,5 +89,7 @@ export default function CartPage() {
         }).join('')}
       </div>
     </div>
+  ${Spinner()}
+
   `
 }
