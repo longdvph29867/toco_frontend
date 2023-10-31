@@ -303,7 +303,7 @@ body {
     color: #131da6;
   }
   .scroll-icon {
-    background-image: url(../public/images/views/ic_scoll.webp);
+    background-image: url(/images/views/ic_scoll.webp);
     width: 18px;
     height: 32px;
     margin: 32px auto 8px;
@@ -425,12 +425,16 @@ body {
     transform: translateY(-0.2rem);
   }
   .cardItem-info h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-transform: capitalize;
     color: var(--black-color-p);
     font-size: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+   
   }
   
   .cardItem-info {
@@ -695,11 +699,11 @@ body {
         rgba(51, 51, 51, 0.86),
         rgba(51, 51, 51, 0.86)
       ),
-      url("../../public/images/views/footer_bg.png");
+      url("/images/views/footer_bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
   }
   .footer-top {
     padding-bottom: 40px;

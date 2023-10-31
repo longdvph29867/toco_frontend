@@ -2,18 +2,23 @@ import '../style.css'
 import '../style/messages.css'
 import '../style/sign_up.css'
 import CartPage from './pages/views/CartPage';
-
 import Demo from './pages/views/Demo';
+import HomePage from './pages/views/homePage';
+import ProductDetail from './pages/views/product_detail';
 import LoginPage from './pages/views/LoginPage';
 import RegisterPage from './pages/views/RegisterPage';
 import { render, router } from './utilities/lib'
-
 const container = document.getElementById('app');
-
-
 router.on('/demo', function () {
   render( Demo, container);
 });
+router.on('/', function () {
+  render( HomePage, container);
+});
+router.on('/product/:id', function ({data}) {
+  render( ()=>ProductDetail(data.id), container);
+}
+)
 router.on('/login', function () {
   render( LoginPage, container);
 });
@@ -66,6 +71,7 @@ router.on('/admin/toppings', function () {
 });
 router.on('/admin/toppings', function () {
   render( CartPage, container);
+
 });
 
 

@@ -120,4 +120,13 @@ function showMesssage(status, messageContent) {
     messEl.querySelector('#desc').innerText = messageContent;
 }
 
-export { render, useState, useEffect, router, showMesssage };
+function showSpinner(action) {
+    if(action) {
+        document.getElementById('spinner').style.display = 'flex'
+    }
+    else {
+        document.getElementById('spinner').style.display = 'none'
+    }
+}
+
+export { render, useState, useEffect, router, showMesssage, showSpinner };

@@ -22,5 +22,11 @@ export const cartService = {
   getCartByAccount: (account) => {
     return https.get(`/carts/${account}`)
   },
+  putCart: (id ,data) => {
+    return https.put(`/carts/${id}`, data)
+  },
+  deleteCart: (id) => {
+    return https.delete(`/carts/${id}`)
+  },
 
 }
