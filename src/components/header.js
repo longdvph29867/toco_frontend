@@ -23,12 +23,12 @@ const Header = (action = false) => {
     });
 return /*html*/ `
     <a href="tel:+84962013495" class="delivery">
-        <img src="../../public/images/views/delivery.png" alt="" />
+        <img src="/images/views/delivery.png" alt="" />
     </a>
     <div id="header">
         <section id="nav" class="${action ? '' : 'fixed'}">
             <a id="header_logo" href="/">
-                <img src="../../public/images/views/logo.png" alt="" />
+                <img src="/images/views/logo.png" alt="" />
             </a>
             <ul class="main-menu" id="header__navbar-modal">
                 <li class="center">

@@ -26,8 +26,7 @@ export default function LoginPage() {
           const userInfo = {...res.data.data, accessToken: res.data. accessToken}
           localUserService.set(userInfo)
           showMesssage(true, res.data.message)
-          router.navigate('/register')
-          // router.navigate('/login')
+          router.navigate('/')
         })
         .catch((err) => {
           console.log(err);

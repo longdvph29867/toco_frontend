@@ -49,7 +49,7 @@ return /*html*/`
     <h3 class="title">ToCoToCo Menu</h3>
     <h1 class="title">SẢN PHẨM NỔI BẬT</h1>
     <div class="products-title-img">
-      <img src="../../public/images/views/card_title.webp" class="img-title" alt="" />
+      <img src="/images/views/card_title.webp" class="img-title" alt="" />
     </div>
     <div class="cardList">
       ${books.slice(0,8).map(function (book) {

@@ -4,6 +4,7 @@ import '../../../style/cart.css'
 import { localUserService } from "../../service/localService"
 import Spinner from "../../components/spinner"
 import Header from "../../components/header"
+import Footer from "../../components/footer"
 export default function CartPage() {
   const [listCarts, setListCarts] = useState([])
   useEffect( () => {
@@ -67,7 +68,7 @@ export default function CartPage() {
               <p>${item.id_product.productName}</p>
             </div>
             <div class="cart-item cart-item-topping">
-              ${item.id_topping.map(item => `${item.toppingName}(${item.toppingPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})})`).join(", ")}
+              ${item.id_topping.map(item => `${item.toppingName}(${item.toppingPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})})`).join(", <br>")}
             </div>
             <div class="cart-item cart-item-price">
               <span>${item.id_product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
@@ -88,7 +89,11 @@ export default function CartPage() {
           `
         }).join('')}
       </div>
+      <div class="btn-order-cart">
+        <button class="btn-show-more">Đặt hàng</button>
+      </div>
     </div>
+  ${Footer()}
   ${Spinner()}
 
   `

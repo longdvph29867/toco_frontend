@@ -6,7 +6,7 @@
     text-align: center;
     border-radius: 20px;
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     left: 0;
     right:0;
     top: 80px;

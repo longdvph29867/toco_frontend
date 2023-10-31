@@ -4,7 +4,7 @@ const Footer = () => {
         <div class="footer-top">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="../../public/images/views/footer_logo.png" alt="" />
+                    <img src="/images/views/footer_logo.png" alt="" />
                 </div>
                 <div class="card_1">
                     <h3>CÔNG TY CP TM&DV TACO VIỆT NAM</h3>
@@ -34,14 +34,14 @@ const Footer = () => {
                     </div>
                     <div class="images">
                         <div class="image">
-                            <img src="../../public/images/views/footer_googleplay.png" alt="" />
+                            <img src="/images/views/footer_googleplay.png" alt="" />
                         </div>
                         <div class="image">
-                            <img src="../../public/images/views/footer_appstore.png" alt="" />
+                            <img src="/images/views/footer_appstore.png" alt="" />
                         </div>
                     </div>
                     <div class="image_3 image">
-                        <img src="../../public/images/views/footer_thongbao.png" alt="" />
+                        <img src="/images/views/footer_thongbao.png" alt="" />
                     </div>
                 </div>
             </div>

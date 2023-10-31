@@ -3,12 +3,12 @@ const Story=()=>{
       <!-- story section starts -->
     <section id="story">
     <div class="story-image">
-        <img src="../../public/images/views/vechungtoi.png" alt="" />
+        <img src="/images/views/vechungtoi.png" alt="" />
     </div>
     <div class="story-info">
         <h3 class="title">ToCoToCo Story</h3>
         <h1 class="title">VỀ CHÚNG TÔI</h1>
-        <img src="../../public/images/views/card_title.webp" alt="" class="img-title" />
+        <img src="/images/views/card_title.webp" alt="" class="img-title" />
         <p>
             Bên cạnh niềm tự hào về những ly trà sữa ngon - sạch - tươi,
             chúng tôi
