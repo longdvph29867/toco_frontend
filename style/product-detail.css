@@ -31,12 +31,14 @@ body{
 }
 .title-option{
     font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .add-topping{
     display: grid ;
     grid-template-columns: repeat(3,1fr);
-    row-gap: 5px;
+    row-gap: 12px;
 }
 .option-item > label{
     margin-right: 20px;
@@ -144,6 +146,7 @@ body{
     color: white;
     text-transform: uppercase;
 }
+
 @media screen and (max-width:970px) { 
     .img-product-detail img{
         width: 300px;

@@ -28,5 +28,9 @@ export const cartService = {
   deleteCart: (id) => {
     return https.delete(`/carts/${id}`)
   },
+  addToCart: (data) => {
+    return https.post(`/carts`, data)
+  },
+
 
 }

@@ -129,4 +129,8 @@ function showSpinner(action) {
     }
 }
 
-export { render, useState, useEffect, router, showMesssage, showSpinner };
+function convertVND(number) {
+    return Number(number).toLocaleString('vi', {style : 'currency', currency : 'VND'})
+}
+
+export { render, useState, useEffect, router, showMesssage, showSpinner, convertVND };

@@ -1,12 +1,14 @@
 import "../../../style/product-detail.css"
-import {useState, useEffect, showSpinner} from '../../utilities/lib'
+import {useState, useEffect, showSpinner, router, showMesssage, convertVND} from '../../utilities/lib'
 import BestSelling from "../../components/detail/best_selling";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import Spinner from "../../components/spinner";
+import { localUserService } from "../../service/localService";
+import { cartService } from "../../service/viewsService";
 
 const ProductDetail = (slug) => {
-    const [book,setBook]=useState({})
+    const [product,setProduct]=useState({})
     const [topping,setTopping]=useState([])
     useEffect(function() {
         showSpinner(true)
@@ -16,7 +18,7 @@ const ProductDetail = (slug) => {
         })
         .then(function(data){
             showSpinner(false)
-            setBook(data.data)
+            setProduct(data.data)
         })
 
         showSpinner(true)
@@ -30,29 +32,75 @@ const ProductDetail = (slug) => {
         })
     }, [])
 
+    useEffect(() => {
+        const btnPre = document.querySelector('.btn-pre')
+        const btnNext = document.querySelector('.btn-next')
+        const inputQuantity = document.getElementById('detail-quantity')
+        const btnBuy = document.getElementById('btn-buy')
+        btnPre.addEventListener('click', () => {
+            if(Number(inputQuantity.value) === 1) {
+                return;
+            }
+            inputQuantity.value = Number(inputQuantity.value) - 1
+        })
+        btnNext.addEventListener('click', () => {
+            inputQuantity.value = Number(inputQuantity.value) + 1
+        })
+
+        btnBuy.addEventListener('click', () => {
+            if(!localUserService.get().account) {
+                showMesssage(false, 'Vui lòng đăng nhập!');
+                return;
+            }
+            let listTopping = []
+            const inputTopping = document.querySelectorAll('input[name="topping"]');
+            for(let item of inputTopping) {
+                if(item.checked) {
+                    listTopping.push(item.value)
+                }
+            }
+            const newData = {
+                account: localUserService.get().account,
+                id_product: product._id,
+                quantity: Number(inputQuantity.value),
+                id_topping: listTopping
+            }
+            cartService.addToCart(newData)
+            .then((res) => {
+                router.navigate('/cart')
+                // console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        })
+    
+    })
+    
+
 return /*html*/` 
     ${Header()}
     <main class="container">
         <div class="product-detail">
             <div class="img-product-detail">
-                <img src="${book.images?.[0]}" alt="">
+                <img src="${product.images?.[0]}" alt="">
             </div>
             <div class="info-product">
                 <div class="name-product">
-                    <h1>${book.productName}</h1>
+                    <h1>${product.productName}</h1>
                 </div>
                 <div class="price-product">
-                    <p>${book.price}đ</p>
+                    <p>${convertVND(product.sale_price)}</p>
                 </div>
                 
                 <div>
-                    <p class="title-option">Thêm Topping</p>
+                    <p class="title-option">Thêm Topping:</p>
                     <div class="add-topping">
                     ${topping.map((topping) => {
                         return /*html*/`
                         <div class="item-topping">
                             <label>
-                                <input name="topping" type="checkbox">
+                                <input name="topping" type="checkbox" value="${topping._id}">
                                 ${topping.toppingName} (+${topping.toppingPrice}đ)
                             </label>
                         </div>
@@ -65,13 +113,13 @@ return /*html*/`
                 <div>
                     <div class="quantity">
                         <span class="title-option">Số lượng :</span>
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" value="1">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn-pre"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" value="1" id="detail-quantity">
+                        <button class="btn-next"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="buy-now">
-                    <button>Mua ngay</button>
+                    <button id="btn-buy">Mua ngay</button>
                 </div>
             </div>
         </div>
@@ -80,7 +128,7 @@ return /*html*/`
                 <div class="description">
                     <h3>Mo ta</h3>
                     <p>
-                        ${book.description}
+                        ${product.description}
                     </p>
                 </div>
                 <div class="comment">

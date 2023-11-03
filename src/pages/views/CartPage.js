@@ -1,5 +1,5 @@
 import { cartService } from "../../service/viewsService"
-import { showMesssage, showSpinner, useEffect, useState } from "../../utilities/lib"
+import { convertVND, showMesssage, showSpinner, useEffect, useState } from "../../utilities/lib"
 import '../../../style/cart.css'
 import { localUserService } from "../../service/localService"
 import Spinner from "../../components/spinner"
@@ -53,14 +53,14 @@ export default function CartPage() {
     const preBtns = document.querySelectorAll('.pre-quantity')
     const nextBtns = document.querySelectorAll('.next-quantity');
     const deleteBtns = document.querySelectorAll('.bnt-delete-cart');
-    const inputQuantity = document.getElementById('input-quantity');
-    if(inputQuantity) {
-      inputQuantity.addEventListener('input', function() {
-        const quantity = inputQuantity.value*1;
-        const idCart = inputQuantity.dataset.id;
+    const inputQuantitys = document.querySelectorAll('.input-quantity');
+    inputQuantitys.forEach(item => {
+      item.addEventListener('input', function() {
+        const quantity = item.value*1;
+        const idCart = item.dataset.id;
         updateQuantity(idCart, quantity)
       })
-    }
+    })
     
     preBtns.forEach(btn => {
       btn.addEventListener('click', function() {
@@ -131,27 +131,27 @@ export default function CartPage() {
           return /*html*/`
           <div class="cart-content">
             <div class="cart-item cart-item-img">
-              <img src="${item.id_product.images[0]}" alt="" />
+              <a href="/product/${item.id_product.slug}">
+                <img src="${item.id_product.images[0]}" alt="" />
+              </a>
             </div>
             <div class="cart-item cart-item-name">
               <p>${item.id_product.productName}</p>
             </div>
             <div class="cart-item cart-item-topping">
-              ${item.id_topping.map(item => `${item.toppingName}(${item.toppingPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})})`).join(", <br>")}
+              ${item.id_topping.map(item => `${item.toppingName}(${convertVND(item.toppingPrice)})`).join(", <br>")}
             </div>
             <div class="cart-item cart-item-price">
-              <span>${item.id_product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
-              <span>${item.id_product.sale_price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+              <span>${convertVND(item.id_product.price)}</span>
+              <span>${convertVND(item.id_product.sale_price)}</span>
             </div>
             <div class="cart-item cart-item-quantity">
-              <div class="cart-quantity-content">
-                <button data-id="${item._id}" data-quantity="${item.quantity}" class="pre-quantity">-</button>
-                <input data-id="${item._id}" type="number" value="${item.quantity}" id="input-quantity"/>
-                <button data-id="${item._id}" data-quantity="${item.quantity}" class="next-quantity">+</button>
-              </div>
+              <button data-id="${item._id}" data-quantity="${item.quantity}" class="pre-quantity">-</button>
+              <input data-id="${item._id}" type="number" value="${item.quantity}" class="input-quantity"/>
+              <button data-id="${item._id}" data-quantity="${item.quantity}" class="next-quantity">+</button>
             </div>
             <div class="cart-item cart-item-total">
-              <span>${itemTotalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+              <span>${convertVND(itemTotalPrice)}</span>
             </div>
             <div class="cart-item cart-item-action">
               <button data-id="${item._id}" class="bnt-delete-cart">Xoá</button>
