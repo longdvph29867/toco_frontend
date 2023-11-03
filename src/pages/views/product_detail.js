@@ -80,76 +80,78 @@ const ProductDetail = (slug) => {
 
 return /*html*/` 
     ${Header()}
-    <main class="container">
-        <div class="product-detail">
-            <div class="img-product-detail">
-                <img src="${product.images?.[0]}" alt="">
-            </div>
-            <div class="info-product">
-                <div class="name-product">
-                    <h1>${product.productName}</h1>
+    <div id="product-detail-page">
+        <main class="container">
+            <div class="product-detail">
+                <div class="img-product-detail">
+                    <img src="${product.images?.[0]}" alt="">
                 </div>
-                <div class="price-product">
-                    <p>${convertVND(product.sale_price)}</p>
-                </div>
-                
-                <div>
-                    <p class="title-option">Thêm Topping:</p>
-                    <div class="add-topping">
-                    ${topping.map((topping) => {
-                        return /*html*/`
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox" value="${topping._id}">
-                                ${topping.toppingName} (+${topping.toppingPrice}đ)
-                            </label>
-                        </div>
-                        `
-                    }).join('')
-                }
+                <div class="info-product">
+                    <div class="name-product">
+                        <h1>${product.productName}</h1>
+                    </div>
+                    <div class="price-product">
+                        <p>${convertVND(product.sale_price)}</p>
+                    </div>
                     
-                    </div>
-                </div>
-                <div>
-                    <div class="quantity">
-                        <span class="title-option">Số lượng :</span>
-                        <button class="btn-pre"><i class="fa-solid fa-minus"></i></button>
-                        <input type="number" value="1" id="detail-quantity">
-                        <button class="btn-next"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
-                <div class="buy-now">
-                    <button id="btn-buy">Mua ngay</button>
-                </div>
-            </div>
-        </div>
-        <div class="product-detail-bottom">
-            <div class="box-left-bot">
-                <div class="description">
-                    <h3>Mo ta</h3>
-                    <p>
-                        ${product.description}
-                    </p>
-                </div>
-                <div class="comment">
-
-                </div>
-                <div>
                     <div>
-
+                        <p class="title-option">Thêm Topping:</p>
+                        <div class="add-topping">
+                        ${topping.map((topping) => {
+                            return /*html*/`
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox" value="${topping._id}">
+                                    ${topping.toppingName} (+${topping.toppingPrice}đ)
+                                </label>
+                            </div>
+                            `
+                        }).join('')
+                    }
+                        
+                        </div>
+                    </div>
+                    <div>
+                        <div class="quantity">
+                            <span class="title-option">Số lượng :</span>
+                            <button class="btn-pre"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" value="1" id="detail-quantity">
+                            <button class="btn-next"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button id="btn-buy">Mua ngay</button>
                     </div>
                 </div>
             </div>
-            <div class="box-right-bot">
-                <div class="best-sale">
-                    <h2>Sản phẩm bán chạy</h2>
-                    <ul class="list-product-sale">
-                    ${BestSelling()}
-                    </ul>
+            <div class="product-detail-bottom">
+                <div class="box-left-bot">
+                    <div class="description">
+                        <h3>Mo ta</h3>
+                        <p>
+                            ${product.description}
+                        </p>
+                    </div>
+                    <div class="comment">
+
+                    </div>
+                    <div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box-right-bot">
+                    <div class="best-sale">
+                        <h2>Sản phẩm bán chạy</h2>
+                        <ul class="list-product-sale">
+                        ${BestSelling()}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     ${Footer()}
     ${Spinner()}
     `

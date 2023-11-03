@@ -12,185 +12,349 @@
     <link rel="stylesheet" href="../../style/comment.css">
 </head>
 <body>
-    <main class="container">
-        <div class="product-detail">
-            <div class="img-product-detail">
-                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-            </div>
-            <div class="info-product">
-                <div class="name-product">
-                    <h1>Ô Long Xoài Kem Cà Phê</h1>
+    <div id="product-detail-page">
+        <main class="container">
+            <div class="product-detail">
+                <div class="img-product-detail">
+                    <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
                 </div>
-                <div class="price-product">
-                    <p>56.000 đ</p>
-                </div>
-                <div class="option-inline">
-                    <div class="option-item">
-                        <p class="title-option">Chọn loại</p>
-                        <label>
-                            <input name="ice" type="radio">
-                            Không lạnh
-                        </label>
-                        <label>
-                            <input name="ice" type="radio">
-                            Có lạnh
-                        </label>
+                <div class="info-product">
+                    <div class="name-product">
+                        <h1>Ô Long Xoài Kem Cà Phê</h1>
                     </div>
-                    <div class="option-item">
-                        <p class="title-option">Chọn size</p>
-                        <label>
-                            <input name="size" type="radio">
-                            M
-                        </label>
-                        <label>
-                            <input name="size" type="radio">
-                            L
-                        </label>
+                    <div class="price-product">
+                        <p>56.000 đ</p>
                     </div>
-                </div>
-                <div>
-                    <p class="title-option">Thêm Topping</p>
-                    <div class="add-topping">
-                        <div class="item-topping">
+                    <div class="option-inline">
+                        <div class="option-item">
+                            <p class="title-option">Chọn loại</p>
                             <label>
-                                <input name="topping" type="checkbox">
-                                Trân châu sương mai (+9000đ)
+                                <input name="ice" type="radio">
+                                Không lạnh
+                            </label>
+                            <label>
+                                <input name="ice" type="radio">
+                                Có lạnh
                             </label>
                         </div>
-                        <div class="item-topping">
+                        <div class="option-item">
+                            <p class="title-option">Chọn size</p>
                             <label>
-                                <input name="topping" type="checkbox">
-                                Trân châu baby (+9000đ)
+                                <input name="size" type="radio">
+                                M
                             </label>
-                        </div>
-                        <div class="item-topping">
                             <label>
-                                <input name="topping" type="checkbox">
-                                Trân châu hoàng kim (+9000đ)
-                            </label>
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                Macchiato (+9000đ)
-                            </label>
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                Rau câu (+9000đ)
-                            </label>
-
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                Trân châu sợi (+9000đ)
-                            </label>
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                Đậu đỏ (+9000đ)
-                            </label>
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                Pudding (+9000đ)
-                            </label>
-                        </div>
-                        <div class="item-topping">
-                            <label>
-                                <input name="topping" type="checkbox">
-                                thạch caffe (+9000đ)
+                                <input name="size" type="radio">
+                                L
                             </label>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="quantity">
-                        <span class="title-option">Số lượng :</span>
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" value="1">
-                        <button><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
-                <div class="buy-now">
-                    <button>Mua ngay</button>
-                </div>
-            </div>
-        </div>
-        <div class="product-detail-bottom">
-            <div class="box-left-bot">
-                <div class="description">
-                    <h3>Mo ta</h3>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                        Saepe consequatur error laboriosam? Ut aspernatur reprehenderit 
-                        assumenda sed accusamus asperiores illum aliquid, laudantium 
-                        est esse veniam ad ex fuga omnis libero?
-                    </p>
-                </div>
-                <div class="comment">
-
-                </div>
-                <div>
                     <div>
-
+                        <p class="title-option">Thêm Topping</p>
+                        <div class="add-topping">
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Trân châu sương mai (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Trân châu baby (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Trân châu hoàng kim (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Macchiato (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Rau câu (+9000đ)
+                                </label>
+    
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Trân châu sợi (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Đậu đỏ (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    Pudding (+9000đ)
+                                </label>
+                            </div>
+                            <div class="item-topping">
+                                <label>
+                                    <input name="topping" type="checkbox">
+                                    thạch caffe (+9000đ)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="quantity">
+                            <span class="title-option">Số lượng :</span>
+                            <button><i class="fa-solid fa-minus"></i></button>
+                            <input type="text" value="1">
+                            <button><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button>Mua ngay</button>
                     </div>
                 </div>
             </div>
-            <div class="box-right-bot">
-                <div class="best-sale">
-                    <h2>Sản phẩm bán chạy</h2>
-                    <ul class="list-product-sale">
-                        <li class="item-product-sale">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a href="" class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                        <li class="item-product-sale">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a href="" class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                        <li class="item-product-sale">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a href="" class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                        <li class="item-product-sale">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a href="" class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                        <li class="item-product-sale">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a href="" class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                        <li class="item-product-sale none-border-list">
-                            <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
-                            <a class="product-sale">
-                                <h3>Ô Long Xoài Kem Cà Phê</h3>
-                                <p>56.000 đ</p>
-                            </a>
-                        </li>
-                    </ul>
+            <div class="product-detail-bottom">
+                <div class="box-left-bot">
+                    <div class="description">
+                        <h3>Mô tả sản phẩm</h3>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Saepe consequatur error laboriosam? Ut aspernatur reprehenderit 
+                            assumenda sed accusamus asperiores illum aliquid, laudantium 
+                            est esse veniam ad ex fuga omnis libero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Saepe consequatur error laboriosam? Ut aspernatur reprehenderit 
+                            assumenda sed accusamus asperiores illum aliquid, laudantium 
+                            est esse veniam ad ex fuga omnis libero?Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Saepe consequatur error laboriosam? Ut aspernatur reprehenderit 
+                            assumenda sed accusamus asperiores illum aliquid, laudantium 
+                            est esse veniam ad ex fuga omnis libero?
+                        </p>
+                    </div>
+                    <div class="comment">
+                        <div>
+                            <!-- list comments -->
+                            <div class="list-comment">
+                                <!-- comment item -->
+                                <div class="item-comment">
+                                    <div class="img-user-comment">
+                                        <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                    </div>
+                                    <div class="container-comment">
+                                        <div class="user-name-comment">
+                                            <p>Đỗ Văn Long</p>
+                                            <p> 20 October, 2018</p>
+                                        </div>
+                                        <p class="content-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic.</p>
+
+                                        <!-- action -->
+                                        <div>
+                                            <div class="action-comment">
+                                                <button class="btn-like-comment btn-like-comment-active">
+                                                    <i class="fa-solid fa-thumbs-up"></i>
+                                                </button>
+                                                <div class="quantity-like-comment">200</div>
+                                                <button class="btn-add-reply">Phản hồi</button>
+                                            </div>
+                                            <div class="contianer-form-reply">
+                                                <div class="img-user-comment">
+                                                    <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                                </div>
+                                                <form action="" class="form-reply">
+                                                    <input type="text" placeholder="Phản hồi...">
+                                                    <div class="action-form-reply">
+                                                        <div class="error-form-reply">
+                                                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing em non. </span>
+                                                        </div>
+                                                        <div class="btn-form-reply">
+                                                            <button type="button" class="btn-close-reply">Huỷ</button>
+                                                            <button class="btn-submit-reply" disabled>Phản hồi</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <!-- btn show reply -->
+                                        <div>
+                                            <button class="btn-show-reply">
+                                                <div class="arrow-down arrow-up"></div>
+                                                <span>21 Phản hồi</span>
+                                            </button>
+                                        </div>
+                                        <!-- list replies -->
+                                        <div class="list-replies">
+                                            <!-- item-reply -->
+                                            <div class="item-comment">
+                                                <div class="img-user-comment">
+                                                    <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                                </div>
+                                                <div class="container-comment">
+                                                    <div class="user-name-comment">
+                                                        <p>Đỗ Văn Long</p>
+                                                        <p> 20 October, 2018</p>
+                                                    </div>
+                                                    <p class="content-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic.</p>
+                                                    <!-- <div class="action-comment">
+                                                        <button class="btn-like-comment">
+                                                            <i class="fa-solid fa-thumbs-up"></i>
+                                                        </button>
+                                                        <div class="quantity-like-comment">200</div>
+                                                        <button class="btn-add-reply">Phản hồi</button>
+                                                    </div> -->
+            
+                                                </div>
+            
+                                            </div>
+                                            <!-- item-reply -->
+                                            <div class="item-comment">
+                                                <div class="img-user-comment">
+                                                    <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                                </div>
+                                                <div class="container-comment">
+                                                    <div class="user-name-comment">
+                                                        <p>Đỗ Văn Long</p>
+                                                        <p> 20 October, 2018</p>
+                                                    </div>
+                                                    <p class="content-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic. or sit amet consectetur adipisicing elit. Ab aliquid harum hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic. or sit amet consectetur adipisicing elit. Ab aliquid harum hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic.</p>
+                                                    <!-- <div class="action-comment">
+                                                        <button class="btn-like-comment">
+                                                            <i class="fa-solid fa-thumbs-up"></i>
+                                                        </button>
+                                                        <div class="quantity-like-comment">200</div>
+                                                        <button class="btn-add-reply">Phản hồi</button>
+                                                    </div> -->
+
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <!--  -->
+                                <div class="item-comment">
+                                    <div class="img-user-comment">
+                                        <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                    </div>
+                                    <div class="container-comment">
+                                        <div class="user-name-comment">
+                                            <p>Đỗ Văn Long</p>
+                                            <p> 20 October, 2018</p>
+                                        </div>
+                                        <p class="content-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic.</p>
+                                        <div class="action-comment">
+                                            <button class="btn-like-comment">
+                                                <i class="fa-solid fa-thumbs-up"></i>
+                                            </button>
+                                            <div class="quantity-like-comment">200</div>
+                                            <button class="btn-add-reply">Phản hồi</button>
+                                        </div>
+                                        <!-- btn show reply -->
+                                        <div>
+                                            <button class="btn-show-reply">
+                                                <div class="arrow-down arrow-up"></div>
+                                                <span>21 Phản hồi</span>
+                                            </button>
+                                        </div>
+                                        <!-- list replies -->
+                                        <div class="list-replies">
+                                            <!-- item-reply -->
+                                            <div class="item-comment">
+                                                <div class="img-user-comment">
+                                                    <img src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png" alt="">
+                                                </div>
+                                                <div class="container-comment">
+                                                    <div class="user-name-comment">
+                                                        <p>Đỗ Văn Long</p>
+                                                        <p> 20 October, 2018</p>
+                                                    </div>
+                                                    <p class="content-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aliquid harum hic.</p>
+                                                    <!-- <div class="action-comment">
+                                                        <button class="btn-like-comment">
+                                                            <i class="fa-solid fa-thumbs-up"></i>
+                                                        </button>
+                                                        <div class="quantity-like-comment">200</div>
+                                                        <button class="btn-add-reply">Phản hồi</button>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="box-right-bot">
+                    <div class="best-sale">
+                        <h2>Sản phẩm bán chạy</h2>
+                        <ul class="list-product-sale">
+                            <li class="item-product-sale">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a href="" class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                            <li class="item-product-sale">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a href="" class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                            <li class="item-product-sale">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a href="" class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                            <li class="item-product-sale">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a href="" class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                            <li class="item-product-sale">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a href="" class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                            <li class="item-product-sale none-border-list">
+                                <img src="https://tocotocotea.com.vn/wp-content/uploads/2022/06/O-Long-xoai-kem-coffee.jpg" alt="">
+                                <a class="product-sale">
+                                    <h3>Ô Long Xoài Kem Cà Phê</h3>
+                                    <p>56.000 đ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
+
+    
 </body>
 </html>

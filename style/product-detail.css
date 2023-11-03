@@ -1,6 +1,10 @@
 body{
     font-family: 'Barlow', sans-serif;
 }
+#product-detail-page {
+    background: #f5f5fa;
+    padding-bottom: 200px;
+}
 .container {
     max-width: 1280px;
     padding: 0 20px;
@@ -22,7 +26,7 @@ body{
     margin-bottom: 20px;
 }
 .price-product{
-    color: #8a733f;
+    color: #d3b673;
     font-size: 26px;
     margin: 20px 0;
 }
@@ -64,8 +68,8 @@ body{
     cursor: pointer;
 }
 .quantity button:hover{
-    background-color: #8a733f;
-    border-color:#8a733f ;
+    background-color: #d3b673;
+    border-color:#d3b673 ;
     color: white;
 }
 .quantity input{
@@ -79,7 +83,7 @@ body{
     margin-top: 20px;
 }
 .buy-now button{
-    background-color: #8a733f;
+    background-color: #d3b673;
     border:none;
     color: white;
     outline: none;
@@ -97,12 +101,25 @@ body{
 .product-detail-bottom{
     margin-top: 80px;
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 .box-left-bot{
     width: 70%;
-    box-shadow: 0 2px 7px 0px rgba(0,0,0,0.1);
-    padding: 5px;
+}
+.description {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.description h3 {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.description p {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: justify;
 }
 .box-right-bot{
     width: 30%;
@@ -134,14 +151,14 @@ body{
     border:none;
 }
 .best-sale{
-    box-shadow: 0 2px 7px 5px rgba(0,0,0,0.1);
-    border-radius: 4px;
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
 }
 .best-sale h2{
     text-align: center;
     margin: 0;
-    background-color: #8a733f;
+    background-color: #d3b673;
     padding:10px 0;
     color: white;
     text-transform: uppercase;
