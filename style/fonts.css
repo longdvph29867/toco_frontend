@@ -1,32 +1,32 @@
 @font-face {
     font-family: BalooExtra;
-    src: url(../public/fonts/barlow/Baloo2-ExtraBold.ttf);
+    src: url(/fonts/barlow/Baloo2-ExtraBold.ttf);
 }
 @font-face {
     font-family: Muli;
-    src: url(../public/fonts/mulish/Mulish-Regular.ttf);
+    src: url(/fonts/mulish/Mulish-Regular.ttf);
 }
 @font-face {
     font-family: Barlow;
-    src: url(../public/fonts/barlow/Barlow-Regular.ttf);
+    src: url(/fonts/barlow/Barlow-Regular.ttf);
 }
 @font-face {
     font-family: MuliExtraBold;
-    src: url(../public/fonts/mulish/Mulish-ExtraBold.ttf);
+    src: url(/fonts/mulish/Mulish-ExtraBold.ttf);
 }
 @font-face {
     font-family: MuliBlack;
-    src: url(../public/fonts/mulish/Mulish-Black.ttf);
+    src: url(/fonts/mulish/Mulish-Black.ttf);
 }
 @font-face {
     font-family: MuliBold;
-    src: url(../public/fonts/mulish/Mulish-Bold.ttf);
+    src: url(/fonts/mulish/Mulish-Bold.ttf);
 }
 @font-face {
     font-family: MuliSemiBold;
-    src: url(../public/fonts/mulish/Mulish-SemiBold.ttf);
+    src: url(/fonts/mulish/Mulish-SemiBold.ttf);
 }
 @font-face {
     font-family: Muli-Variable;
-    src: url(../public/fonts/mulish/Mulish-VariableFont_wght.ttf);
+    src: url(/fonts/mulish/Mulish-VariableFont_wght.ttf);
 }

@@ -10,6 +10,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="../../style/sign_up.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #spinner {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+    #spinner img {
+      width: 650px;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,6 +71,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="spinner">
+    <img src="/images/movie.gif" alt="">
   </div>
 </body>
 
