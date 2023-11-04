@@ -1,5 +1,5 @@
-const Franchise=()=>{
-    return /*html*/`
+const Franchise = () => {
+  return /*html*/ `
    <!-- franchise section starts -->
    <div id="franchise">
    <div class="franchise-info">
@@ -19,6 +19,6 @@ const Franchise=()=>{
        <img src="../../public/images/views/nhuongquyen.png" alt="" />
    </div>
 </div>
-<!-- franchise section ends --> `
-}
-export default Franchise
+<!-- franchise section ends --> `;
+};
+export default Franchise;

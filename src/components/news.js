@@ -1,5 +1,5 @@
-const News=()=>{
-    return /*html*/`
+const News = () => {
+  return /*html*/ `
     <!-- news section starts -->
     <section id="news">
         <h3 class="title">Tin Tức và Khuyến Mãi</h3>
@@ -101,6 +101,6 @@ const News=()=>{
             </div>
         </div>
     </section>
-    <!-- news section ends -->  `
-}
-export default News
+    <!-- news section ends -->  `;
+};
+export default News;

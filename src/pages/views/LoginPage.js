@@ -2,44 +2,45 @@ import { localUserService } from "../../service/localService";
 import { authService } from "../../service/viewsService";
 import { router, showMesssage, useEffect } from "../../utilities/lib";
 import { required } from "../../validations/viewsValidation";
-
 export default function LoginPage() {
-
   useEffect(() => {
-    const formLogin = document.getElementById('login-form');
-    formLogin.addEventListener('submit', function(e) {
+    const formLogin = document.getElementById("login-form");
+    formLogin.addEventListener("submit", function (e) {
       e.preventDefault();
       const formData = new FormData(formLogin);
-      const account = formData.get('account')
-      const password = formData.get('password')
-      
+      const account = formData.get("account");
+      const password = formData.get("password");
+
       const data = {
         account,
-        password
+        password,
+      };
+      let isValid = required(account, "error-account");
+      isValid &= required(password, "error-password");
+      if (isValid) {
+        authService
+          .postLogin(data)
+          .then((res) => {
+            // console.log(res.data);
+            const userInfo = {
+              ...res.data.data,
+              accessToken: res.data.accessToken,
+            };
+            localUserService.set(userInfo);
+            showMesssage(true, res.data.message);
+            router.navigate("/register");
+            // router.navigate('/login')
+          })
+          .catch((err) => {
+            console.log(err);
+            // showMesssage(false, err.response.data.message)
+            showMesssage(false, "Tài khoản hoặc mật khẩu không đúng!");
+          });
       }
-      let isValid = required(account, 'error-account')
-      isValid &= required(password, 'error-password')
-      if(isValid) {
-        authService.postLogin(data)
-        .then((res) => {
-          // console.log(res.data);
-          const userInfo = {...res.data.data, accessToken: res.data. accessToken}
-          localUserService.set(userInfo)
-          showMesssage(true, res.data.message)
-          router.navigate('/register')
-          // router.navigate('/login')
-        })
-        .catch((err) => {
-          console.log(err);
-          // showMesssage(false, err.response.data.message)
-          showMesssage(false, 'Tài khoản hoặc mật khẩu không đúng!')
-        });
-      }
-    })
-    
-  }, [])
+    });
+  }, []);
 
-  return /*html*/`
+  return /*html*/ `
   <div>
     <div class="background">
       <div class="coating">
@@ -75,5 +76,5 @@ export default function LoginPage() {
       </div>
     </div>
   </div>
-  `
+  `;
 }

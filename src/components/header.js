@@ -1,51 +1,90 @@
-import { useEffect } from "../utilities/lib"
+import { useEffect, useState } from "../utilities/lib";
 
 // component header
-const Header = () => {
-   useEffect(() =>{
+const Header = (action = false) => {
+  let [categories, setCategories] = useState([]);
+  let [products, setProduct] = useState([]);
+  useEffect(() => {
+    fetch("https://toco-backend.vercel.app/categories")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        setCategories(data.data);
+      });
+    fetch("https://toco-backend.vercel.app/products?category=instant-milk-tea")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        setProduct(data.data);
+      });
+  }, []);
+  console.log(products);
+
+  useEffect(() => {
     // header
-window.onscroll = () => {
-    if (window.scrollY > 0) {
-      document.querySelector("#nav").classList.add("fixed");
-    } else {
-      document.querySelector("#nav").classList.remove("fixed");
+    if (action) {
+      window.onscroll = () => {
+        if (window.scrollY > 0) {
+          document.querySelector("#nav").classList.add("fixed");
+        } else {
+          document.querySelector("#nav").classList.remove("fixed");
+        }
+      };
     }
-  };
-   }
-   )
-    return /*html*/`
+  });
+  return /*html*/ `
     <a href="tel:+84962013495" class="delivery">
-    <img src="../../public/images/views/delivery.png" alt="" />
-</a>
+        <img src="/images/views/delivery.png" alt="" />
+    </a>
     <div id="header">
-        <section id="nav">
-            <a id="header_logo" href="#">
-                <img src="../../public/images/views/logo.png" alt="" />
+        <section id="nav" class="${action ? "" : "fixed"}">
+            <a id="header_logo" href="/">
+                <img src="/images/views/logo.png" alt="" />
             </a>
             <ul class="main-menu" id="header__navbar-modal">
                 <li class="center">
-                    <a href="TrangChu.html" class="navbar__link">Trang chủ</a>
+                    <a href="/" class="navbar__link">Trang chủ</a>
                 </li>
                 <li>
-                    <a href="LichSuVaSuMenh.html" class="navbar__link">Giới
+                    <a href="#" class="navbar__link">Giới
                         thiệu <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="LichSuVaSuMenh.html">Lịch sử và sứ mệnh</a>
+                            <a href="#">Lịch sử và sứ mệnh</a>
                         </li>
                         <li>
-                            <a href="ThanhTuuDatDuoc.html">Thành tựu đạt
+                            <a href="#">Thành tựu đạt
                                 được</a>
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Instant_milktea.html" class="navbar__link">Danh mục
+                        <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                    ${categories.map((item) => {
+                      return /*html*/ `
+                              <li>
+                                  <a href="${item.categorySlug}">${item.categoryName}</a>
+                              </li>
+                          `;
+                    })}
                     </ul>
                 </li>
                 <li>
                     <a href="Instant_milktea.html" class="navbar__link">Sản phẩm
                         <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
                     <ul class="sub-menu">
-                        <li><a href="Order.html">TOCOTOCO KEM TRÀ SỮA</a></li>
-                        <li><a href="Order.html">TOCOTOCO KEM CAFE</a></li>
-                        <li><a href="Order.html">INSTANT MILKTEA</a></li>
+                    ${products.map((item) => {
+                      return /*html*/ `
+                                <li>
+                                    <a href="${item.categorySlug}">${item.productName}</a>
+                                </li>
+                            `;
+                    })}
+                       
                     </ul>
                 </li>
                 <li>
@@ -65,10 +104,6 @@ window.onscroll = () => {
                 <li class="center">
                     <a href="TuyenDung.html" class="navbar__link">Tuyển dụng</a>
                 </li>
-                <li class="center">
-                    <a href="NhuongQuyen.html" class="navbar__link">Nhượng
-                        quyền</a>
-                </li>
             </ul>
             <div class="btn-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -76,7 +111,7 @@ window.onscroll = () => {
             <label for="toggler" id="modal" class="fas fa-bars"></label>
         </section>
     </div>
-  `
-  }
-  
-  export default Header
+  `;
+};
+
+export default Header;

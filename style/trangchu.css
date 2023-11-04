@@ -173,13 +173,14 @@ body {
   
   .main-menu li:hover ul.sub-menu {
     display: block;
+    
   }
   
   .main-menu ul.sub-menu {
     position: absolute;
     left: 0;
     background-color: #282828;
-    width: 15rem;
+   
     padding: 0;
     display: none;
   }

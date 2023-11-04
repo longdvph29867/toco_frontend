@@ -17,8 +17,7 @@ router.on('/', function () {
 });
 router.on('/product/:id', function ({data}) {
   render( ()=>ProductDetail(data.id), container);
-}
-)
+})
 router.on('/login', function () {
   render( LoginPage, container);
 });
@@ -28,7 +27,6 @@ router.on('/register', function () {
 router.on('/cart', function () {
   render( CartPage, container);
 });
-
 // categories
 router.on('/admin/categories', function () {
   render( CartPage, container);

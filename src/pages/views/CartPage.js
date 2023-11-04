@@ -1,24 +1,23 @@
-import { cartService } from "../../service/viewsService"
-import { showMesssage, useEffect, useState } from "../../utilities/lib"
-import '../../../style/cart.css'
-import { localUserService } from "../../service/localService"
+import { cartService } from "../../service/viewsService";
+import { showMesssage, useEffect, useState } from "../../utilities/lib";
+import "../../../style/cart.css";
+import { localUserService } from "../../service/localService";
 export default function CartPage() {
-  const [listCarts, setListCarts] = useState([])
-  useEffect( () => {
-    const { account } = localUserService.get()
-    cartService.getCartByAccount(account)
-    .then((res) => {
-      // console.log(res.data);
-      setListCarts(res.data.data)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  },[])
+  const [listCarts, setListCarts] = useState([]);
+  useEffect(() => {
+    const { account } = localUserService.get();
+    cartService
+      .getCartByAccount(account)
+      .then((res) => {
+        // console.log(res.data);
+        setListCarts(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  
-
-  return /*html*/`
+  return /*html*/ `
     <div class="cart-container">
       <div class="cart-header">
         <div class="cart-content">
@@ -46,11 +45,17 @@ export default function CartPage() {
         </div>
       </div>
       <div class="cart-list">
-        ${listCarts.map(item => {
-          const totalTopping = item.id_topping.reduce((total, item) => total + item.toppingPrice, 0) * item.quantity
-          const itemTotalPrice = (item.id_product.sale_price * item.quantity) + totalTopping
+        ${listCarts
+          .map((item) => {
+            const totalTopping =
+              item.id_topping.reduce(
+                (total, item) => total + item.toppingPrice,
+                0
+              ) * item.quantity;
+            const itemTotalPrice =
+              item.id_product.sale_price * item.quantity + totalTopping;
 
-          return /*html*/`
+            return /*html*/ `
           <div class="cart-content">
             <div class="cart-item cart-item-img">
               <img src="${item.id_product.images[0]}" alt="" />
@@ -59,11 +64,25 @@ export default function CartPage() {
               <p>${item.id_product.productName}</p>
             </div>
             <div class="cart-item cart-item-topping">
-              ${item.id_topping.map(item => `${item.toppingName}(${item.toppingPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})})`).join(", ")}
+              ${item.id_topping
+                .map(
+                  (item) =>
+                    `${item.toppingName}(${item.toppingPrice.toLocaleString(
+                      "vi",
+                      { style: "currency", currency: "VND" }
+                    )})`
+                )
+                .join(", ")}
             </div>
             <div class="cart-item cart-item-price">
-              <span>${item.id_product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
-              <span>${item.id_product.sale_price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+              <span>${item.id_product.price.toLocaleString("vi", {
+                style: "currency",
+                currency: "VND",
+              })}</span>
+              <span>${item.id_product.sale_price.toLocaleString("vi", {
+                style: "currency",
+                currency: "VND",
+              })}</span>
             </div>
             <div class="cart-item cart-item-quantity">
               <button>-</button>
@@ -71,15 +90,19 @@ export default function CartPage() {
               <button>+</button>
             </div>
             <div class="cart-item cart-item-total">
-              <span>${itemTotalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+              <span>${itemTotalPrice.toLocaleString("vi", {
+                style: "currency",
+                currency: "VND",
+              })}</span>
             </div>
             <div class="cart-item cart-item-action">
               <button>Xoá</button>
             </div>
           </div>
-          `
-        }).join('')}
+          `;
+          })
+          .join("")}
       </div>
     </div>
-  `
+  `;
 }

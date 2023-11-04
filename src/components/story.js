@@ -1,5 +1,5 @@
-const Story=()=>{
-    return /*html*/`
+const Story = () => {
+  return /*html*/ `
       <!-- story section starts -->
     <section id="story">
     <div class="story-image">
@@ -19,6 +19,6 @@ const Story=()=>{
         <button class="btn-show-more">XEM THÊM</button>
     </div>
 </section>
-<!-- story section ends -->  `
-}
-export default Story
+<!-- story section ends -->  `;
+};
+export default Story;

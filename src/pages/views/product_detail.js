@@ -1,42 +1,35 @@
-import "../../../style/product-detail.css"
-import {useState, useEffect} from '../../utilities/lib'
+import "../../../style/product-detail.css";
+import { useState, useEffect } from "../../utilities/lib";
 import BestSelling from "../../components/detail/best_selling";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
-
 const ProductDetail = (slug) => {
-    const [book,setBook]=useState({})
-    const [topping,setTopping]=useState([])
-    useEffect(function() {
-       
-        fetch('https://toco-backend.vercel.app/products/'+slug)
-        .then(function(res){
-          return res.json()
-        })
-        .then(function(data){
-          setBook(data.data)
-        })
-        fetch('https://toco-backend.vercel.app/toppings')
-        .then(function(res){
-          return res.json()
-        })
-        .then(function(data){
-            setTopping(data.data)
-        })
-        
-        
-    }, [])
-    console.log(book);
-    console.log(topping);
-   
-    return /*html*/` 
-    ${Header()}
+  const [book, setBook] = useState({});
+  const [topping, setTopping] = useState([]);
+  useEffect(function () {
+    fetch("https://toco-backend.vercel.app/products/" + slug)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        setBook(data.data);
+      });
+    fetch("https://toco-backend.vercel.app/toppings")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        setTopping(data.data);
+      });
+  }, []);
+  return /*html*/ ` 
+  ${Header()}
         <main class="container">
             <div class="product-detail">
                 <div class="img-product-detail">
                     <img src="${book.images?.[0]}" alt="">
                 </div>
-                <div class="info-product">
+                <div class="info-product ">
                     <div class="name-product">
                         <h1>${book.productName}</h1>
                     </div>
@@ -70,8 +63,9 @@ const ProductDetail = (slug) => {
                     <div>
                         <p class="title-option">Thêm Topping</p>
                         <div class="add-topping">
-                        ${topping.map((topping) => {
-                            return /*html*/`
+                        ${topping
+                          .map((topping) => {
+                            return /*html*/ `
                             <div class="item-topping">
                                 <label>
                                     <input name="topping" type="checkbox">
@@ -79,9 +73,9 @@ const ProductDetail = (slug) => {
 
                                     </label>
                                     </div>
-                                    `
-                        }).join('')
-                    }
+                                    `;
+                          })
+                          .join("")}
                             
                         </div>
                     </div>
@@ -107,7 +101,6 @@ const ProductDetail = (slug) => {
                         </p>
                     </div>
                     <div class="comment">
-    
                     </div>
                     <div>
                         <div>
@@ -122,11 +115,10 @@ const ProductDetail = (slug) => {
           ${BestSelling()}
           </ul>
       </div>
-  </div>
-               
-            </div>
+  </div>      
+                        </div>
         </main>
         ${Footer()}
-   `
-}
-export default ProductDetail
+   `;
+};
+export default ProductDetail;
