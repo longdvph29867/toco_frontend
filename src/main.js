@@ -20,6 +20,7 @@ import UpdateCategories from "./pages/admin/categories/update_categories";
 import Toppings from "./pages/admin/topping/topping";
 import AddTopping from "./pages/admin/topping/add_toppings";
 import UpdateTopping from "./pages/admin/topping/update_topping";
+import UpdateProduct from "./pages/admin/products/update_products";
 
 const container = document.getElementById("app");
 
@@ -54,9 +55,9 @@ router.on("/admin/products", function () {
 router.on("/admin/products/add", function () {
   render(AddProduct, container);
 });
-// router.on("/admin/products", function () {
-//   render(CartPage, container);
-// });
+router.on("/admin/products/update/:id", function ({ data }) {
+  render(() => UpdateProduct(data.id), container);
+});
 
 // users
 router.on("/admin/users", function () {

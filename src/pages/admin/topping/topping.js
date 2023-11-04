@@ -1,5 +1,10 @@
 import { adminService } from "../../../service/adminService";
-import { useEffect, useState } from "../../../utilities/lib";
+import {
+  router,
+  showMesssage,
+  useEffect,
+  useState,
+} from "../../../utilities/lib";
 
 const Toppings = () => {
   const [toppings, setToppings] = useState([]);
@@ -13,6 +18,26 @@ const Toppings = () => {
         console.log(error);
       });
   }, []);
+  useEffect(() => {
+    const btn_delete = document.querySelectorAll(".btn_delete");
+    btn_delete.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cf = confirm(`Bạn chắc chắn muốn xóa topping này?`);
+        if (cf) {
+          const id = btn.dataset.id;
+          adminService
+            .deleteTopping(id)
+            .then((response) => {
+              showMesssage(true, response.data.message);
+              router.navigate("/admin/toppings");
+            })
+            .catch((error) => {
+              showMesssage(false, error.message);
+            });
+        }
+      });
+    });
+  });
   return `
     <main class="app-content">
     <div class="app-title">
@@ -53,7 +78,7 @@ const Toppings = () => {
                         data-id="${topping._id}"><i class="fas fa-trash-alt"></i>
                     </button>
                     <a class="btn btn-primary btn-sm btn_edit" title="Sửa" id="show-emp"
-                      href="/admin/toppings/update/${topping._id}"  ><i class="fas fa-edit"></i>
+                      href="/admin/toppings/update/${topping._id}"><i class="fas fa-edit"></i>
                     </a>
                     </td>
                 </tr>

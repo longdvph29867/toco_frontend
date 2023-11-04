@@ -38,7 +38,7 @@ const UpdateTopping = (id) => {
       const { value, error } = scehma.validate(data);
       if (!error) {
         adminService
-          .postToppings({ toppingName, toppingPrice })
+          .updateTopping(id, value)
           .then((response) => {
             showMesssage(true, response.data.message);
             router.navigate("/admin/toppings");

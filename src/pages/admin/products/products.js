@@ -1,5 +1,10 @@
 import { adminService } from "../../../service/adminService";
-import { useEffect, useState } from "../../../utilities/lib";
+import {
+  router,
+  showMesssage,
+  useEffect,
+  useState,
+} from "../../../utilities/lib";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -14,10 +19,18 @@ const AdminProducts = () => {
     const btn_dellete = document.querySelectorAll(".trash");
     btn_dellete.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const id = btn.dataset.id;
         const cf = confirm("Bạn có chắc chắn muốn xóa");
         if (cf) {
-          console.log(id);
+          const id = btn.dataset.id;
+          adminService
+            .deleteProductDetail(id)
+            .then((response) => {
+              showMesssage(true, "Xóa thành công");
+              router.navigate("/admin/products");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
     });
@@ -71,10 +84,10 @@ const AdminProducts = () => {
                     data-id="${product._id}">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
-                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                    data-toggle="modal" data-target="#ModalUP">
+                <a class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp"
+                href="/admin/products/update/${product._id}"">
                     <i class="fas fa-edit"></i>
-                </button>
+                </a>
                 </td>
             </tr>
             `;
