@@ -73,20 +73,7 @@ const Header = (action = false) => {
                     })}
                     </ul>
                 </li>
-                <li>
-                    <a href="Instant_milktea.html" class="navbar__link">Sản phẩm
-                        <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
-                    <ul class="sub-menu">
-                    ${products.map((item) => {
-                      return /*html*/ `
-                                <li>
-                                    <a href="${item.categorySlug}">${item.productName}</a>
-                                </li>
-                            `;
-                    })}
-                       
-                    </ul>
-                </li>
+              
                 <li>
                     <a href="TinTuc.html" class="navbar__link">Tin tức <i
                             class="fa-sharp fa-solid fa-chevron-down"></i></a>
