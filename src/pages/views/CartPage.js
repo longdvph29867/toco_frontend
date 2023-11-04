@@ -1,23 +1,37 @@
 import { cartService } from "../../service/viewsService";
-import { showMesssage, useEffect, useState } from "../../utilities/lib";
+import {
+  showMesssage,
+  showSpinner,
+  useEffect,
+  useState,
+} from "../../utilities/lib";
 import "../../../style/cart.css";
 import { localUserService } from "../../service/localService";
+import Spinner from "../../components/spinner";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 export default function CartPage() {
   const [listCarts, setListCarts] = useState([]);
   useEffect(() => {
     const { account } = localUserService.get();
+    showSpinner(true);
     cartService
       .getCartByAccount(account)
       .then((res) => {
         // console.log(res.data);
+        showSpinner(false);
+
         setListCarts(res.data.data);
       })
       .catch((err) => {
+        showSpinner(false);
+
         console.log(err);
       });
   }, []);
 
   return /*html*/ `
+    ${Header()}
     <div class="cart-container">
       <div class="cart-header">
         <div class="cart-content">
@@ -72,7 +86,7 @@ export default function CartPage() {
                       { style: "currency", currency: "VND" }
                     )})`
                 )
-                .join(", ")}
+                .join(", <br>")}
             </div>
             <div class="cart-item cart-item-price">
               <span>${item.id_product.price.toLocaleString("vi", {
@@ -103,6 +117,12 @@ export default function CartPage() {
           })
           .join("")}
       </div>
+      <div class="btn-order-cart">
+        <button class="btn-show-more">Đặt hàng</button>
+      </div>
     </div>
+  ${Footer()}
+  ${Spinner()}
+
   `;
 }

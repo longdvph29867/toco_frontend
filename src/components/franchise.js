@@ -5,7 +5,7 @@ const Franchise = () => {
    <div class="franchise-info">
        <h3 class="title">ToCoToCo Franchise</h3>
        <h1 class="title">NHƯỢNG QUYỀN</h1>
-       <img src="../../public/images/views/card_title.webp" class="img-title" alt="" />
+       <img src="/images/views/card_title.webp" class="img-title" alt="" />
        <p class="title">
            Gia nhập đế chế 300 TRIỆU USD. Nếu bạn bắt đầu kinh doanh khởi
            nghiệp
@@ -16,7 +16,7 @@ const Franchise = () => {
        <button class="btn-show-more">XEM THÊM</button>
    </div>
    <div class="franchise-image">
-       <img src="../../public/images/views/nhuongquyen.png" alt="" />
+       <img src="/images/views/nhuongquyen.png" alt="" />
    </div>
 </div>
 <!-- franchise section ends --> `;

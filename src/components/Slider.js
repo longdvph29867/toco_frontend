@@ -47,8 +47,8 @@ const Slider = () => {
  <div class="carousel-inner" id="carousel-inner">
      <div class="slide">
          <div class="bg-slide"></div>
-         <!-- <img src="../../public/images/views/" alt=""> -->
-         <img src="../../public/images/views/home_3.jpg" alt="" class="slide-image" />
+         <!-- <img src="/images/views/" alt=""> -->
+         <img src="/images/views/home_3.jpg" alt="" class="slide-image" />
          <div class="slide-content">
              <!-- Mấy cái nut đặt hàng này dẫn đến trang Order -->
              <a href="Order.html" class="order-now">Đặt hàng ngay</a>
@@ -58,7 +58,7 @@ const Slider = () => {
      </div>
      <div class="slide">
          <div class="bg-slide"></div>
-         <img src="../../public/images/views/home.jpg" alt="" class="slide-image" />
+         <img src="/images/views/home.jpg" alt="" class="slide-image" />
          <div class="slide-content">
              <a href="Order.html" class="order-now">Đặt hàng ngay</a>
              <div class="scroll-icon"></div>
@@ -67,7 +67,7 @@ const Slider = () => {
      </div>
      <div class="slide">
          <div class="bg-slide"></div>
-         <img src="../../public/images/views/home_2.jpg" alt="" class="slide-image" />
+         <img src="/images/views/home_2.jpg" alt="" class="slide-image" />
          <div class="slide-content">
              <a href="Order.html" class="order-now">Đặt hàng ngay</a>
              <div class="scroll-icon"></div>
