@@ -34,3 +34,11 @@ export const cartService = {
 
 
 }
+
+export const commentService = {
+  getCommentByProduct: (id) => {
+    return https.get(`/comments?productId=${id}`)
+  },
+
+
+}

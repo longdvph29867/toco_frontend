@@ -43,26 +43,28 @@ const HomePage = () => {
   })
 
 return /*html*/` 
-  ${Header(true)}
-  ${Slider()}
-  <section id="products">
-    <h3 class="title">ToCoToCo Menu</h3>
-    <h1 class="title">SẢN PHẨM NỔI BẬT</h1>
-    <div class="products-title-img">
-      <img src="/images/views/card_title.webp" class="img-title" alt="" />
-    </div>
-    <div class="cardList">
-      ${books.slice(0,8).map(function (book) {
-        return OutstandingPro(book)
-      }).join('')}
-    </div>
-    <a href="#"><button class="btn-show-more">XEM TẤT CẢ</button></a>
-  </section> 
-  ${Story()}
-  ${Franchise()}
-  ${News()}
-  ${Footer()}
-  ${Spinner()}
+  <div class="home-page">
+    ${Header(true)}
+    ${Slider()}
+    <section id="products">
+      <h3 class="title">ToCoToCo Menu</h3>
+      <h1 class="title">SẢN PHẨM NỔI BẬT</h1>
+      <div class="products-title-img">
+        <img src="/images/views/card_title.webp" class="img-title" alt="" />
+      </div>
+      <div class="cardList">
+        ${books.slice(0,8).map(function (book) {
+          return OutstandingPro(book)
+        }).join('')}
+      </div>
+      <a href="#"><button class="btn-show-more">XEM TẤT CẢ</button></a>
+    </section> 
+    ${Story()}
+    ${Franchise()}
+    ${News()}
+    ${Footer()}
+    ${Spinner()}
+  </div>
   `
 }
 

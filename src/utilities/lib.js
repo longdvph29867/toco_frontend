@@ -133,4 +133,33 @@ function convertVND(number) {
     return Number(number).toLocaleString('vi', {style : 'currency', currency : 'VND'})
 }
 
-export { render, useState, useEffect, router, showMesssage, showSpinner, convertVND };
+function timeAgo(date) {
+    const currentDate = new Date();
+    const pastDate = new Date(date);
+    const timeDifference = currentDate - pastDate;
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+    const months = Math.floor(weeks / 4);
+    const years = Math.floor(months / 12);
+    
+    if (years > 0) {
+    return `${years} năm trước`;
+    } else if (months > 0) {
+    return `${months} tháng trước`;
+    } else if (weeks > 0) {
+    return `${weeks} tuần trước`;
+    } else if (days > 0) {
+    return `${days} ngày trước`;
+    } else if (hours > 0) {
+    return `${hours} giờ trước`;
+    } else if (minutes > 0) {
+    return `${minutes} phút trước`;
+    } else {
+    return `${seconds} giây trước`;
+    }
+}
+
+export { render, useState, useEffect, router, showMesssage, showSpinner, convertVND, timeAgo };

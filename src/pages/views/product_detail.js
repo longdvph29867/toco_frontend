@@ -7,6 +7,7 @@ import Spinner from "../../components/spinner";
 import { localUserService } from "../../service/localService";
 import { cartService } from "../../service/viewsService";
 import ItemTopping from "../../components/ItemTopping";
+import Comments from "../../components/detail/Comments";
 
 const ProductDetail = (slug) => {
     const [product,setProduct]=useState({})
@@ -125,8 +126,8 @@ return /*html*/`
                             ${product.description}
                         </p>
                     </div>
-                    <div class="comment">
-
+                    <div>
+                        ${Comments(product._id)}
                     </div>
                     <div>
                         <div>

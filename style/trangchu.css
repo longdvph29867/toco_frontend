@@ -3,7 +3,6 @@ body {
   }
   
   * {
-    font-family: Muli;
     border: none;
     outline: none;
     box-sizing: border-box;
@@ -18,6 +17,9 @@ body {
     --black-color-p: #212529;
     --price-color: #8a733f;
     --discount-color: #bebebe;
+  }
+  .home-page {
+    font-family: Muli;
   }
   
   section {
