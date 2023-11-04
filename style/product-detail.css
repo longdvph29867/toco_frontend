@@ -40,9 +40,10 @@ body{
 }
 
 .add-topping{
-    display: grid ;
-    grid-template-columns: repeat(3,1fr);
-    row-gap: 12px;
+    display: flex ;
+    /* grid-template-columns: repeat(3,1fr); */
+    flex-wrap: wrap;
+    gap: 12px;
 }
 .option-item > label{
     margin-right: 20px;
@@ -78,6 +79,7 @@ body{
     height: 24px;
     outline: none;
     text-align: center;
+    background-color: transparent;
 }
 .buy-now{
     margin-top: 20px;
@@ -172,7 +174,7 @@ body{
         font-size: 14px;
     }
     .add-topping{
-        grid-template-columns: repeat(2,1fr);
+        /* grid-template-columns: repeat(2,1fr); */
     }
     .box-left-bot{
         width: 60%;
@@ -189,7 +191,7 @@ body{
         width: 250px;
     }
     .add-topping{
-        grid-template-columns: auto;
+        /* grid-template-columns: auto; */
     }
     .option-inline{
         gap: 0;

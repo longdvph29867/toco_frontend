@@ -6,6 +6,7 @@ import Header from "../../components/header";
 import Spinner from "../../components/spinner";
 import { localUserService } from "../../service/localService";
 import { cartService } from "../../service/viewsService";
+import ItemTopping from "../../components/ItemTopping";
 
 const ProductDetail = (slug) => {
     const [product,setProduct]=useState({})
@@ -27,7 +28,7 @@ const ProductDetail = (slug) => {
             return res.json()
         })
         .then(function(data){
-            showSpinner(false)
+            // showSpinner(false)
             setTopping(data.data)
         })
     }, [])
@@ -97,18 +98,10 @@ return /*html*/`
                     <div>
                         <p class="title-option">Thêm Topping:</p>
                         <div class="add-topping">
-                        ${topping.map((topping) => {
-                            return /*html*/`
-                            <div class="item-topping">
-                                <label>
-                                    <input name="topping" type="checkbox" value="${topping._id}">
-                                    ${topping.toppingName} (+${topping.toppingPrice}đ)
-                                </label>
-                            </div>
-                            `
-                        }).join('')
-                    }
-                        
+                            ${topping.map((topping) => {
+                                return ItemTopping(topping)
+                                }).join('')
+                            }
                         </div>
                     </div>
                     <div>

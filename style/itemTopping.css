@@ -1,0 +1,30 @@
+.content-item-topping .item-topping {
+    display: inline-block;
+    padding: 4px 10px ;
+    border: 1px solid #1b1b1b;
+    position: relative;
+    border-radius: 6px;
+    color: #1b1b1b;
+    user-select: none;
+    cursor: pointer;
+}
+.content-item-topping .item-topping-icon {
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transform: translate(40%, -40%);
+    color: #d3b673;
+    background-color: #fff;
+}
+.content-item-topping input {
+    visibility: hidden;
+    width: 0;
+}
+.content-item-topping input:checked ~ .item-topping {
+    border-color:#d3b673;
+    color: #d3b673;
+}
+.content-item-topping input:checked ~ .item-topping .item-topping-icon {
+    display: block;
+}
