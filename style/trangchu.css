@@ -284,20 +284,17 @@ body {
     transform: translateY(-20%);
   }
   .order-now {
-    display: flex;
-    height: 40px;
+    display: inline-block;
     color: #fff;
     text-decoration: none;
     border: 1px solid #fff;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
+    padding: 10px 15px;
     font-family: Muli-Variable, sans-serif;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
-    max-width: 166px;
+    max-width: 186px;
     margin: auto;
     /* Margin của cái nút đặt hàng */
     margin-top: 90px;
@@ -306,7 +303,7 @@ body {
   .order-now:hover {
     background-color: #d2a451;
     border-color: #d2a451;
-    color: #131da6;
+    color: #fff;
   }
   .scroll-icon {
     background-image: url(/images/views/ic_scoll.webp);
@@ -507,8 +504,9 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 57%;
+    right: 0;
     text-align: center;
+    padding-right: calc(8% + 50px);
   }
   
   .story-info p {
@@ -602,10 +600,11 @@ body {
     text-transform: uppercase;
     color: #282828;
     font-size: 0.9rem;
-    padding: 0.7rem;
+    -webkit-line-clamp: 5;
     line-height: 1.4rem;
     font-family: Barlow;
     text-align: start;
+    padding: 0 10px;
   }
   
   .news-card,
@@ -883,11 +882,12 @@ body {
   
     /* story starts */
     .story-info {
-      position: absolute;
-      top: 130%;
-      transform: translateY(-50%);
+      /* transform: translateY(-50%);
       left: 20%;
-      text-align: center;
+      text-align: center; */
+      right: 50%;
+      transform: translate(50%, -50%);
+      padding-right: 0;
     }
   
     /* franchise starts */
