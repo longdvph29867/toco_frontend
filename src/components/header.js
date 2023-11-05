@@ -20,7 +20,6 @@ const Header = (action = false) => {
         setProduct(data.data);
       });
   }, []);
-  console.log(products);
 
   useEffect(() => {
     // header

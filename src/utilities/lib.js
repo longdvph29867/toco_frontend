@@ -121,7 +121,6 @@ function showMesssage(status, messageContent) {
 }
 
 function showSpinner(action) {
-    console.log("🚀 ~ file: lib.js:126 ~ showSpinner ~ document.getElementById('spinner'):", document.getElementById('spinner'))
     if(action) {
         document.getElementById('spinner').style.display = 'flex'
     }
