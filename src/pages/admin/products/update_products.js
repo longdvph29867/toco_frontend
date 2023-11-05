@@ -8,9 +8,9 @@ import {
 import axios from "axios";
 import { adminService } from "../../../service/adminService";
 
-const UpdateProduct = (id) => {
+const UpdateProduct = (slug) => {
   const [categories, setCategories] = useState([]);
-
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     adminService
       .getCategories()
@@ -21,9 +21,9 @@ const UpdateProduct = (id) => {
         console.log(err);
       });
     adminService
-      .getProductDetail(id)
+      .getProductDetail(slug)
       .then((res) => {
-        console.log(res.data.data);
+        setProduct(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -109,7 +109,7 @@ const UpdateProduct = (id) => {
       }
     };
   });
-
+  console.log(product);
   return `
     <main class="app-content">
       <div class="app-title">
@@ -126,22 +126,30 @@ const UpdateProduct = (id) => {
               <form class="row" id="form-add">
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên sản phẩm</label>
-                  <input name="nameProduct" class="form-control" type="text">
+                  <input value="${
+                    product.productName || ""
+                  }" name="nameProduct" class="form-control" type="text">
                 </div>
   
                 <div class="form-group  col-md-3">
                   <label class="control-label">Giá gốc</label>
-                  <input name="price"  class="form-control" type="number">
+                  <input value="${
+                    product.price || ""
+                  }" name="price"  class="form-control" type="number">
                 </div>
                 <div class="form-group  col-md-3">
                   <label class="control-label">Giá khuyến mãi</label>
-                  <input name="salePrice" class="form-control" type="number">
+                  <input value="${
+                    product.sale_price || ""
+                  }" name="salePrice" class="form-control" type="number">
                 </div>
                 
                 <div class="form-group col-md-12">
                   <label class="control-label">Ảnh sản phẩm</label>
                   <div id="myfileupload">
-                    <input type="file" id="uploadfile" name="ImageUpload" multiple/>
+                    <input file="${
+                      product.images
+                    }" type="file" id="uploadfile" name="ImageUpload" multiple/>
                   </div>
 
                 </div>
@@ -149,20 +157,29 @@ const UpdateProduct = (id) => {
                   <label for="exampleSelect1" class="control-label">Danh mục</label>
                   <div class="row">
                   ${categories
-                    .map((categorie) => {
+                    .map((category) => {
+                      let isMatch = product.id_category?.find((item) => {
+                        if (item._id == category._id) {
+                          return true;
+                        }
+                      });
+                      const checked = isMatch ? "checked" : "";
                       return `
-                    <label class="control-label col-md-3">
-                       <input class="checkbox_categories" type="checkbox" value="${categorie._id}">
-                       ${categorie.categoryName}
-                    </label>
-                    `;
+                      <div class="col-md-3 checkbox_categories">
+                        <label>
+                          <input type="checkbox" ${checked} value="${category._id}" name="checkbox_categories">
+                          ${category.categoryName}
+                          </label>
+                          </div>`;
                     })
                     .join("")}
                   </div>
                 </div>
                 <div class="form-group col-md-12">
                   <label class="control-label">Mô tả sản phẩm</label>
-                  <textarea class="form-control" name="description" id="mota"></textarea>
+                  <textarea class="form-control" name="description" id="mota">${
+                    product.description || ""
+                  }</textarea>
                 </div>
                 <div class="form-group col-md-12">
                   <button class="btn btn-save">Lưu lại</button>

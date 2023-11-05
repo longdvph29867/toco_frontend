@@ -23,8 +23,8 @@ export const adminService = {
   postProducts: (data) => {
     return https.post("/products", data);
   },
-  getProductDetail: (id) => {
-    return https.get(`/products/${id}`);
+  getProductDetail: (slug) => {
+    return https.get(`/products/${slug}`);
   },
   deleteProductDetail: (id) => {
     return https.delete(`/products/${id}`);

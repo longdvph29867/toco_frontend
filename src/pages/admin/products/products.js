@@ -85,7 +85,7 @@ const AdminProducts = () => {
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
                 <a class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp"
-                href="/admin/products/update/${product._id}"">
+                href="/admin/products/update/${product.slug}"">
                     <i class="fas fa-edit"></i>
                 </a>
                 </td>

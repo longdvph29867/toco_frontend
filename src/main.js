@@ -21,6 +21,7 @@ import Toppings from "./pages/admin/topping/topping";
 import AddTopping from "./pages/admin/topping/add_toppings";
 import UpdateTopping from "./pages/admin/topping/update_topping";
 import UpdateProduct from "./pages/admin/products/update_products";
+import AdminLayout from "./pages/admin/admin_layout";
 
 const container = document.getElementById("app");
 
@@ -37,48 +38,48 @@ router.on("/cart", function () {
   render(CartPage, container);
 });
 
-// categories
+// admin categories
 router.on("/admin/categories", function () {
-  render(Categories, container);
+  render(() => AdminLayout(Categories), container);
 });
 router.on("/admin/categories/add", function () {
-  render(AddCategories, container);
+  render(() => AdminLayout(AddCategories), container);
 });
 router.on("/admin/categories/update/:id", function ({ data }) {
-  render(() => UpdateCategories(data.id), container);
+  render(() => AdminLayout(() => UpdateCategories(data.id)), container);
 });
 
-// products
+//admin products
 router.on("/admin/products", function () {
-  render(AdminProducts, container);
+  render(() => AdminLayout(AdminProducts), container);
 });
 router.on("/admin/products/add", function () {
-  render(AddProduct, container);
+  render(() => AdminLayout(AddProduct), container);
 });
-router.on("/admin/products/update/:id", function ({ data }) {
-  render(() => UpdateProduct(data.id), container);
+router.on("/admin/products/update/:slug", function ({ data }) {
+  render(() => AdminLayout(() => UpdateProduct(data.slug)), container);
 });
 
-// users
+//admin users
 router.on("/admin/users", function () {
-  render(User, container);
+  render(() => AdminLayout(User), container);
 });
 router.on("/admin/users/add", function () {
-  render(AddUser, container);
+  render(() => AdminLayout(AddUser), container);
 });
 router.on("/admin/users/update/:id", function ({ data }) {
-  render(() => UpdateUser(data.id), container);
+  render(() => AdminLayout(() => UpdateUser(data.id)), container);
 });
 
-// toppings
+// admin toppings
 router.on("/admin/toppings", function () {
-  render(Toppings, container);
+  render(() => AdminLayout(Toppings), container);
 });
 router.on("/admin/toppings/add", function () {
-  render(AddTopping, container);
+  render(() => AdminLayout(AddTopping), container);
 });
 router.on("/admin/toppings/update/:id", function ({ data }) {
-  render(() => UpdateTopping(data.id), container);
+  render(() => AdminLayout(() => UpdateTopping(data.id)), container);
 });
 
 router.resolve();
