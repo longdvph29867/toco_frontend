@@ -26,21 +26,7 @@ const HomePage = () => {
         showSpinner(false);
       });
   }, []);
-  useEffect(function () {
-    var modal = document.getElementById("modal");
-    var navbar = document.getElementById("header__navbar-modal");
-    var check = true;
 
-    modal.addEventListener("click", function (event) {
-      if (check) {
-        ul.classList.add("navbar-block");
-        check = false;
-      } else {
-        ul.classList.remove("navbar-block");
-        check = true;
-      }
-    });
-  });
 
   return /*html*/ ` 
   ${Header(true)}
