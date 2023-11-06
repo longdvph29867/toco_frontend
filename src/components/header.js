@@ -33,6 +33,10 @@ const Header = (action = false) => {
       };
     }
 
+    const btnMenuMoblie = document.getElementById('modal');
+    btnMenuMoblie.addEventListener('click', function () {
+      document.querySelector('.header-right').classList.toggle('showMenumobile')
+    })
   });
   return /*html*/ `
     <a href="tel:+84962013495" class="delivery">
@@ -97,7 +101,7 @@ const Header = (action = false) => {
           <div class="btn-search">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
-          <label for="toggler" id="modal" class="fas fa-bars"></label>
+          <label id="modal" class="fas fa-bars"></label>
         </div>
       </section>
     </div>

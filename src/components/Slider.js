@@ -20,7 +20,6 @@ const Slider = () => {
     // SLide trước đó
     function slidePrev() {
       let lists = document.querySelectorAll(".slide");
-      console.log("🚀 ~ file: Slider.js:24 ~ slidePrev ~ lists:", lists)
       document
         .getElementById("carousel-inner")
         .prepend(lists[lists.length - 1]);
