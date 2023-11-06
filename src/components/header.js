@@ -24,6 +24,9 @@ const Header = (action = false) => {
   useEffect(() => {
     // header
     if (action) {
+      if(window.scrollY > 0) {
+        document.querySelector("#nav").classList.add("fixed")
+      }
       window.onscroll = () => {
         if (window.scrollY > 0) {
           document.querySelector("#nav").classList.add("fixed");
