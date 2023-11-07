@@ -53,6 +53,12 @@ const UpdateProduct = (slug) => {
   };
 
   useEffect(() => {
+    const imgs = [];
+    const img = document.querySelectorAll(".productDetail_img");
+    img.forEach((img) => {
+      imgs.push(img.currentSrc);
+    });
+
     const formAdd = document.querySelector("#form-add");
     formAdd.onsubmit = async (event) => {
       event.preventDefault();
@@ -63,22 +69,43 @@ const UpdateProduct = (slug) => {
       const checkbox_categories = document.querySelectorAll(
         ".checkbox_categories"
       );
-      console.log(categories);
+
       const description = formData.get("description");
       const files = document.querySelector("#uploadfile").files;
+
+      console.log(files);
       const arr_categories = [];
       let id_category = [];
       checkbox_categories.forEach((checkbox_cate) => {
         if (checkbox_cate.checked) {
-          arr_categories.push(checkbox_cate.value);
+          id_category.push(checkbox_cate.value);
         }
       });
-      if (arr_categories.length > 0) {
-        id_category = arr_categories;
-      } else {
+      if (id_category.length == 0) {
         console.log("phai chon it nhat 1 danh muc");
         return false;
       }
+      let images = [];
+      if (files.length == 0) {
+        images = product.images;
+      } else {
+        if (files.length > 5) {
+          console.log("Upload toi da 5 anh");
+          return false;
+        } else {
+          for (const img of files) {
+            if (img.type !== "image/jpeg" && img.type !== "image/png") {
+              console.log("Chỉ chấp nhận tệp tin ảnh JPEG hoặc PNG.");
+              return false;
+            } else if (img.size > 2 * 1024 * 1024) {
+              console.log("Tệp quá lớn. Vui lòng chọn tệp dưới 2MB.");
+              return false;
+            }
+          }
+          images = await upload_img(files);
+        }
+      }
+
       const dataShema = {
         productName,
         price,
@@ -86,9 +113,7 @@ const UpdateProduct = (slug) => {
         description,
       };
       const { error } = schema.validate(dataShema);
-      console.log(error);
       if (!error) {
-        const images = await upload_img(files);
         const data = {
           productName,
           price,
@@ -109,19 +134,19 @@ const UpdateProduct = (slug) => {
       }
     };
   });
-  console.log(product);
+
   return `
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item">Danh sách sản phẩm</li>
-          <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+        <li class="breadcrumb-item"><a href="/admin/products">Danh sách sản phẩm</a></li>
+        <li class="breadcrumb-item"><span>Cập nhật phẩm</span></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title">Tạo mới sản phẩm</h3>
+            <h3 class="tile-title">Cập nhật sản phẩm</h3>
             <div class="tile-body">
               <form class="row" id="form-add">
                 <div class="form-group col-md-3">
@@ -147,10 +172,18 @@ const UpdateProduct = (slug) => {
                 <div class="form-group col-md-12">
                   <label class="control-label">Ảnh sản phẩm</label>
                   <div id="myfileupload">
-                    <input file="${
-                      product.images
-                    }" type="file" id="uploadfile" name="ImageUpload" multiple/>
+                    <input type="file" id="uploadfile" name="ImageUpload" multiple/>
+                    
                   </div>
+                  <div id="img-box" class="mt-3 grid column-gap-3">
+                  ${product.images
+                    ?.map((img) => {
+                      return `
+                        <img class="productDetail_img g-col-3" width="50" height="50" src="${img}" alt="">
+                    `;
+                    })
+                    .join("")}
+                    </div>
 
                 </div>
                 <div class="form-group col-md-12">
@@ -167,7 +200,7 @@ const UpdateProduct = (slug) => {
                       return `
                       <div class="col-md-3 checkbox_categories">
                         <label>
-                          <input type="checkbox" ${checked} value="${category._id}" name="checkbox_categories">
+                          <input class="checkbox_categories" type="checkbox" ${checked} value="${category._id}" name="checkbox_categories">
                           ${category.categoryName}
                           </label>
                           </div>`;
@@ -183,7 +216,7 @@ const UpdateProduct = (slug) => {
                 </div>
                 <div class="form-group col-md-12">
                   <button class="btn btn-save">Lưu lại</button>
-                  <a class="btn btn-cancel" href="table-data-product.html">Hủy bỏ</a>
+                  <a class="btn btn-cancel" href="/admin/products">Hủy bỏ</a>
                 </div>
               </form>
             </div>

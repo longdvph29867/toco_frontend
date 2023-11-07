@@ -42,7 +42,7 @@ const Toppings = () => {
     <main class="app-content">
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb side">
-        <li class="breadcrumb-item active"><a href="#"><b>Danh sách nhân viên</b></a></li>
+        <li class="breadcrumb-item active"><a href="/admin/toppings"><b>Danh sách Toppings</b></a></li>
       </ul>
       <div id="clock"></div>
     </div>
@@ -55,7 +55,7 @@ const Toppings = () => {
             <div class="row element-button">
               <div class="col-sm-2">
                 <a class="btn btn-add btn-sm" href="/admin/toppings/add" title="Thêm"><i class="fas fa-plus"></i>
-                  Tạo mới nhân viên</a>
+                  Thêm Toppings</a>
               </div>
             </div>
     <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0"

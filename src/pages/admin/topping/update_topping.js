@@ -53,14 +53,14 @@ const UpdateTopping = (id) => {
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item">Danh sách sản phẩm</li>
-          <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+          <li class="breadcrumb-item">Danh sách Toppings</li>
+          <li class="breadcrumb-item"><span>Cập nhật Topping</span></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title">Tạo mới sản phẩm</h3>
+            <h3 class="tile-title">Cập nhật Topping</h3>
             <div class="tile-body">
               <form class="form_cate" id="form-topping">
                 <div class="from-item">

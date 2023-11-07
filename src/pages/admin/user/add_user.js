@@ -69,8 +69,8 @@ const AddUser = () => {
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item">Danh sách sản phẩm</li>
-          <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+          <li class="breadcrumb-item"><a href="/admin/users">Danh sách tài khoản</a></li>
+          <li class="breadcrumb-item"><a href="/admin/users/add">Thêm mới tài khoản</a></li>
         </ul>
       </div>
       <div class="row">
@@ -111,7 +111,7 @@ const AddUser = () => {
                 
                 <div class="form-group col-md-12">
                   <button class="btn btn-save">Lưu lại</button>
-                  <a class="btn btn-cancel" href="table-data-product.html">Hủy bỏ</a>
+                  <a class="btn btn-cancel" href="/admin/users/add">Hủy bỏ</a>
                 </div>
               </form>
             </div>

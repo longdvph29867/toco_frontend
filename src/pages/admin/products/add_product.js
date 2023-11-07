@@ -55,30 +55,48 @@ const AddProduct = () => {
       const checkbox_categories = document.querySelectorAll(
         ".checkbox_categories"
       );
-      console.log(categories);
       const description = formData.get("description");
       const files = document.querySelector("#uploadfile").files;
+      console.log(files);
       const arr_categories = [];
       let id_category = [];
       checkbox_categories.forEach((checkbox_cate) => {
         if (checkbox_cate.checked) {
-          arr_categories.push(checkbox_cate.value);
+          id_category.push(checkbox_cate.value);
         }
       });
-      if (arr_categories.length > 0) {
-        id_category = arr_categories;
-      } else {
+      if (id_category.length == 0) {
         console.log("phai chon it nhat 1 danh muc");
         return false;
       }
+
+      if (files.length == 0) {
+        console.log("phai chon it nhat 1 anh");
+        return false;
+      } else if (files.length > 5) {
+        console.log("upload toi da duoc 5 anh");
+        return false;
+      } else {
+        for (const img of files) {
+          if (img.type !== "image/jpeg" && img.type !== "image/png") {
+            console.log("Chỉ chấp nhận tệp tin ảnh JPEG hoặc PNG.");
+            return false;
+          } else if (img.size > 2 * 1024 * 1024) {
+            console.log("Tệp quá lớn. Vui lòng chọn tệp dưới 2MB.");
+            return false;
+          }
+        }
+      }
+
       const dataShema = {
         productName,
         price,
         sale_price,
         description,
       };
+
       const { error } = schema.validate(dataShema);
-      console.log(error);
+
       if (!error) {
         const images = await upload_img(files);
         const data = {
@@ -106,8 +124,8 @@ const AddProduct = () => {
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item">Danh sách sản phẩm</li>
-          <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+          <li class="breadcrumb-item"><a href="/admin/products">Danh sách sản phẩm</a></li>
+          <li class="breadcrumb-item"><a href="/admin/products/add">Thêm sản phẩm</a></li>
         </ul>
       </div>
       <div class="row">
@@ -158,7 +176,7 @@ const AddProduct = () => {
                 </div>
                 <div class="form-group col-md-12">
                   <button class="btn btn-save">Lưu lại</button>
-                  <a class="btn btn-cancel" href="table-data-product.html">Hủy bỏ</a>
+                  <a class="btn btn-cancel" href="/admin/products">Hủy bỏ</a>
                 </div>
               </form>
             </div>

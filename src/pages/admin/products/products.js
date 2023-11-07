@@ -39,7 +39,7 @@ const AdminProducts = () => {
   <main class="app-content">
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb side">
-        <li class="breadcrumb-item active"><a href="#"><b>Danh sách nhân viên</b></a></li>
+        <li class="breadcrumb-item active"><a href="/admin/products"><b>Danh sách sản phẩm</b></a></li>
       </ul>
       <div id="clock"></div>
     </div>
@@ -59,11 +59,11 @@ const AdminProducts = () => {
         id="sampleTable">
         <thead>
         <tr>
-            <th width="300">Tên sản phẩm</th>
+            <th width="250">Tên sản phẩm</th>
             <th width="20">Ảnh</th>
             <th width="100">Danh mục</th>
-            <th>Giá gốc</th>
-            <th>Giá khuyến mại</th>
+            <th width="100">Giá gốc</th>
+            <th width="140">Giá khuyến mại</th>
             <th>Mô tả</th>
             <th>Thao tác</th>
 
@@ -75,11 +75,13 @@ const AdminProducts = () => {
             return `
             <tr>
                 <td>${product.productName}</td>
-                <td><img class="img-card-person" src="${product.images?.[0]}" alt=""></td>
+                <td><img class="img-card-person" src="${
+                  product.images?.[0]
+                }" alt=""></td>
                 <td>0</td>
                 <td>${product.price}</td>
                 <td>${product.sale_price}</td>
-                <td>${product.description}</td>
+                <td>${product.description.slice(0, 100) + "..."}</td>
                 <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
                     data-id="${product._id}">
                     <i class="fa-solid fa-trash-can"></i>
