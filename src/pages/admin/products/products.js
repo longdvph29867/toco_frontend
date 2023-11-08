@@ -10,9 +10,14 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    adminService.getProducts().then((reponse) => {
-      setProducts(reponse.data.data);
-    });
+    adminService
+      .getProducts()
+      .then((reponse) => {
+        setProducts(reponse.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
@@ -61,9 +66,8 @@ const AdminProducts = () => {
         <tr>
             <th width="250">Tên sản phẩm</th>
             <th width="20">Ảnh</th>
-            <th width="100">Danh mục</th>
-            <th width="100">Giá gốc</th>
-            <th width="140">Giá khuyến mại</th>
+            <th >Giá gốc</th>
+            <th >Giá khuyến mại</th>
             <th>Mô tả</th>
             <th>Thao tác</th>
 
@@ -78,7 +82,6 @@ const AdminProducts = () => {
                 <td><img class="img-card-person" src="${
                   product.images?.[0]
                 }" alt=""></td>
-                <td>0</td>
                 <td>${product.price}</td>
                 <td>${product.sale_price}</td>
                 <td>${product.description.slice(0, 100) + "..."}</td>
