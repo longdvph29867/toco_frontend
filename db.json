@@ -1,0 +1,62 @@
+{
+    "products":
+    [
+        {
+            "id": 1,
+            "title": "Trà Sữa Chân Châu Đường Hổ",
+            "image": "/card_1.jpg",
+            "price":33.000,
+            "discount": 25.000
+          },
+        {
+            "id": 2,
+            "title": "Trà Sữa Phô Mai Tươi",
+            "image": "/card_2.png",
+            "price": 28.000,
+            "discount": 25.000
+          },
+        {
+            "id": 3,
+            "title": "Trà Đào Dâu Tây Kem Phô Mai",
+            "image": "/card_3.png",
+            "price": 46.000,
+            "discount": 25.000
+          },
+        {
+            "id": 4,
+            "title": "Trà Mận Hạt Sen",
+            "image": "/card_4.png",
+            "price": 48.000,
+            "discount": 25.000
+          },
+        {
+            "id": 5,
+            "title": "Trà Bưởi Hồng Trân Châu...",
+            "image": "/card_5.jpg",
+            "price": 38.000,
+            "discount": 25.000
+          },
+        {
+            "id": 6,
+            "title": "Instant Milk Tea - Strawberry...",
+            "image": "./public/images/views/card_6.png",
+            "price": 165.000,
+            "discount": 65.000
+          },
+        {
+            "id": 7,
+            "title": "Instant Milk Tea - Original - Se..",
+            "image": "./public/images/views/card_7.png",
+            "price": 160.000,
+            "discount": 160.000
+          },
+        {
+            "id": 8,
+            "title": "Instant Milk Tea Strawberry",
+            "image": "./public/images/views/card_8.jpg",
+            "price": 26.000,
+            "discount": 26.000
+          }
+         
+    ]
+}

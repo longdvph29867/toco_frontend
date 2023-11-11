@@ -9,6 +9,7 @@ body{
 .product-detail{
     display: flex;
     gap: 50px;
+    padding-top: 160px;
 }
 .info-product{
     width: 70%;
@@ -124,6 +125,15 @@ body{
 }
 .product-sale p,h3{
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: capitalize;
+    color: var(--black-color-p);
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .none-border-list{
     border:none;

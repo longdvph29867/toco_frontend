@@ -37,10 +37,9 @@ router.on("/register", function () {
 router.on("/cart", function () {
   render(CartPage, container);
 });
-
-// admin categories
+// categories
 router.on("/admin/categories", function () {
-  render(() => AdminLayout(Categories), container);
+  render(CartPage, container);
 });
 router.on("/admin/categories/add", function () {
   render(() => AdminLayout(AddCategories), container);
@@ -78,8 +77,8 @@ router.on("/admin/toppings", function () {
 router.on("/admin/toppings/add", function () {
   render(() => AdminLayout(AddTopping), container);
 });
-router.on("/admin/toppings/update/:id", function ({ data }) {
-  render(() => AdminLayout(() => UpdateTopping(data.id)), container);
+router.on("/admin/toppings", function () {
+  render(CartPage, container);
 });
 
 router.resolve();
