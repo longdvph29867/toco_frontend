@@ -73,7 +73,7 @@ export default function AdminLayout(component) {
 
 
     <!-- User Menu-->
-    <li><a class="app-nav__item" href="/index.html"><i class="fa-solid fa-right-from-bracket"></i> </a>
+    <li><a classgit ="app-nav__item" href="/index.html"><i class="fa-solid fa-right-from-bracket"></i> </a>
 
     </li>
   </ul>
