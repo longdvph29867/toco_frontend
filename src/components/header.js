@@ -3,6 +3,7 @@ import { useEffect, useState } from "../utilities/lib";
 // component header
 const Header = (action = false) => {
   let [categories, setCategories] = useState([]);
+
   let [products, setProduct] = useState([]);
   useEffect(() => {
     fetch("https://toco-backend.vercel.app/categories")
@@ -61,13 +62,13 @@ const Header = (action = false) => {
                     </ul>
                 </li>
                 <li>
-                    <a href="Instant_milktea.html" class="navbar__link">Danh mục
+                    <a href="/products" class="navbar__link">Danh mục
                         <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
                     <ul class="sub-menu">
                     ${categories.map((item) => {
                       return /*html*/ `
                               <li>
-                                  <a href="${item.categorySlug}">${item.categoryName}</a>
+                                  <a href="/product?category=${item.categorySlug}">${item.categoryName}</a>
                               </li>
                           `;
                     })}
