@@ -39,7 +39,7 @@ router.on("/cart", function () {
 });
 // categories
 router.on("/admin/categories", function () {
-  render(CartPage, container);
+  render(() => AdminLayout(Categories), container);
 });
 router.on("/admin/categories/add", function () {
   render(() => AdminLayout(AddCategories), container);
@@ -77,8 +77,8 @@ router.on("/admin/toppings", function () {
 router.on("/admin/toppings/add", function () {
   render(() => AdminLayout(AddTopping), container);
 });
-router.on("/admin/toppings", function () {
-  render(CartPage, container);
+router.on("/admin/toppings/update/:id", function ({ data }) {
+  render(() => AdminLayout(() => UpdateCategories(data.id)), container);
 });
 
 router.resolve();
