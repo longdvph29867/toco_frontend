@@ -23,6 +23,7 @@ import UpdateTopping from "./pages/admin/topping/update_topping";
 import UpdateProduct from "./pages/admin/products/update_products";
 import AdminLayout from "./pages/admin/admin_layout";
 import HomePage from "./pages/views/homePage";
+import ProductDetail from "./pages/views/product_detail";
 
 const container = document.getElementById("app");
 
@@ -41,6 +42,10 @@ router.on("/register", function () {
 router.on("/cart", function () {
   render(CartPage, container);
 });
+router.on("/product/:id", function ({ data }) {
+  render(() => ProductDetail(data.id), container);
+});
+
 // categories
 router.on("/admin/categories", function () {
   render(() => AdminLayout(Categories), container);
@@ -82,7 +87,7 @@ router.on("/admin/toppings/add", function () {
   render(() => AdminLayout(AddTopping), container);
 });
 router.on("/admin/toppings/update/:id", function ({ data }) {
-  render(() => AdminLayout(() => UpdateCategories(data.id)), container);
+  render(() => AdminLayout(() => UpdateTopping(data.id)), container);
 });
 
 router.resolve();
