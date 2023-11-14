@@ -6,7 +6,7 @@ import "../style/sign_up.css";
 import Categories from "./pages/admin/categories/categories";
 import AdminProducts from "./pages/admin/products/products";
 import CartPage from "./pages/views/CartPage";
-
+import ProductByCate from "./pages/views/products_by_category";
 import Demo from "./pages/views/Demo";
 import LoginPage from "./pages/views/LoginPage";
 import RegisterPage from "./pages/views/RegisterPage";
@@ -39,8 +39,6 @@ router.on("/login", function () {
 router.on("/register", function () {
   render(RegisterPage, container);
 });
-
-import ProductByCate from "./pages/views/products_by_category";
 
 router.on("/demo", function () {
   render(Demo, container);
