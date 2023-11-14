@@ -1,5 +1,5 @@
 import "../style.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../style/admin.css";
 import "../style/messages.css";
 import "../style/sign_up.css";
@@ -32,6 +32,28 @@ router.on("/", function () {
 });
 router.on("/demo", function () {
   render(Demo, container);
+});
+router.on("/login", function () {
+  render(LoginPage, container);
+});
+router.on("/register", function () {
+  render(RegisterPage, container);
+});
+
+import ProductByCate from "./pages/views/products_by_category";
+
+router.on("/demo", function () {
+  render(Demo, container);
+});
+router.on("/", function () {
+  render(HomePage, container);
+});
+
+router.on("/product/:id", function ({ data }) {
+  render(() => ProductDetail(data.id), container);
+});
+router.on("/product", function ({ queryString }) {
+  render(() => ProductByCate(queryString), container);
 });
 router.on("/login", function () {
   render(LoginPage, container);

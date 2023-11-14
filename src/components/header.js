@@ -3,6 +3,7 @@ import { useEffect, useState } from "../utilities/lib";
 // component header
 const Header = (action = false) => {
   let [categories, setCategories] = useState([]);
+
   let [products, setProduct] = useState([]);
   useEffect(() => {
     fetch("https://toco-backend.vercel.app/categories")
@@ -24,8 +25,8 @@ const Header = (action = false) => {
   useEffect(() => {
     // header
     if (action) {
-      if(window.scrollY > 0) {
-        document.querySelector("#nav").classList.add("fixed")
+      if (window.scrollY > 0) {
+        document.querySelector("#nav").classList.add("fixed");
       }
       window.onscroll = () => {
         if (window.scrollY > 0) {
@@ -36,10 +37,12 @@ const Header = (action = false) => {
       };
     }
 
-    const btnMenuMoblie = document.getElementById('modal');
-    btnMenuMoblie.addEventListener('click', function () {
-      document.querySelector('.header-right').classList.toggle('showMenumobile')
-    })
+    const btnMenuMoblie = document.getElementById("modal");
+    btnMenuMoblie.addEventListener("click", function () {
+      document
+        .querySelector(".header-right")
+        .classList.toggle("showMenumobile");
+    });
   });
   return /*html*/ `
     <a href="tel:+84962013495" class="delivery">
@@ -75,7 +78,7 @@ const Header = (action = false) => {
                 ${categories.map((item) => {
                   return /*html*/ `
                     <li>
-                      <a href="${item.categorySlug}">${item.categoryName}</a>
+                      <a href="/product?category=${item.categorySlug}">${item.categoryName}</a>
                     </li>
                   `;
                 })}
