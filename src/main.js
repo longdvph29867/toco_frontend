@@ -22,9 +22,13 @@ import AddTopping from "./pages/admin/topping/add_toppings";
 import UpdateTopping from "./pages/admin/topping/update_topping";
 import UpdateProduct from "./pages/admin/products/update_products";
 import AdminLayout from "./pages/admin/admin_layout";
+import HomePage from "./pages/views/homePage";
 
 const container = document.getElementById("app");
 
+router.on("/", function () {
+  render(HomePage, container);
+});
 router.on("/demo", function () {
   render(Demo, container);
 });
