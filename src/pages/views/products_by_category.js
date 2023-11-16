@@ -33,7 +33,7 @@ const ProductByCate = (queryString) => {
 
   return /*html*/ ` 
     ${Header()}
-    <main>
+    <main class="container">
     <div style="display:flex; gap:20px;padding-top: 100px;">
         <div class="box-left-cate">
             <div class="title-cate">

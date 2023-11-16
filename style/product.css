@@ -1,6 +1,10 @@
 body{
     font-family: 'Barlow', sans-serif;
 }
+.container{
+  width: 1200px;
+  padding: 0 25px;
+}
 .box-left-cate{
     width: 40%;
     padding: 0 20px;
@@ -34,7 +38,7 @@ body{
 }
 .cardList {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin-bottom: 3rem;
   }
