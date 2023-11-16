@@ -1,3 +1,4 @@
+import { localUserService } from "@/service/localService";
 import { useEffect, useState } from "../utilities/lib";
 
 // component header
@@ -21,7 +22,6 @@ const Header = (action = false) => {
         setProduct(data.data);
       });
   }, []);
-
   useEffect(() => {
     // header
     if (action) {
@@ -36,6 +36,13 @@ const Header = (action = false) => {
         }
       };
     }
+    useEffect(() => {
+      const logOut_btn = document.querySelector("#logout");
+      logOut_btn.addEventListener("click", () => {
+        localUserService.remove();
+        location.href = "/";
+      });
+    });
 
     const btnMenuMoblie = document.getElementById("modal");
     btnMenuMoblie.addEventListener("click", function () {
@@ -99,8 +106,18 @@ const Header = (action = false) => {
               <a href="CuaHang.html" class="navbar__link">Cửa hàng</a>
             </li>
             <li class="login-container">
-                <a href="/login">Đăng nhập</a>
-                <a href="/register">Đăng ký</a>
+            ${
+              localUserService.get()
+                ? `<div>
+            <img class="img-user" src="https://toco-production-v1.firebaseapp.com/assets/icons/logo_icon.png">
+            
+          </div>
+          <span class="sigout" id="logout">Đăng xuất</span>`
+                : `<a href="/login">Đăng nhập</a>
+            <a href="/register">Đăng ký</a>`
+            }
+                
+                
             </li>
           </ul>
 

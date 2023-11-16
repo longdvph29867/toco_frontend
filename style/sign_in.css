@@ -38,8 +38,8 @@ body{
 .form{
     margin-top: 20px;
 }
-.form input {
-    width: 100%;
+.form-input {
+    width: 150%;
     height: 40px;
     border: none;
     border-bottom: 1px solid gray;

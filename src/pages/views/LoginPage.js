@@ -28,7 +28,7 @@ export default function LoginPage() {
             };
             localUserService.set(userInfo);
             showMesssage(true, res.data.message);
-            router.navigate("/register");
+            router.navigate("/");
             // router.navigate('/login')
           })
           .catch((err) => {
@@ -51,14 +51,14 @@ export default function LoginPage() {
           <form action="" class="form" id="login-form">
             <div>
               <label for="">
-                <input type="text" name="account" id="account" placeholder="Nhập tài khoản">
               </label>
+              <input class="form-input" type="text" name="account" id="account" placeholder="Nhập tài khoản">
               <span id="error-account" class=error-el></span>
             </div>
             <div>
               <label for="">
-                <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
               </label>
+              <input class="form-input" type="password" name="password" id="password" placeholder="Nhập mật khẩu">
               <span id="error-password" class=error-el></span>
             </div>
             <div class="btn-sign-up">
