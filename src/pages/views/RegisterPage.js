@@ -1,10 +1,7 @@
 import { authService } from "../../service/viewsService";
 import { useEffect, showMesssage, router } from "../../utilities/lib";
 import { required, validCheckRePassword, validLength, validPhoneNunber } from "../../validations/viewsValidation";
-
-
 export default function RegisterPage() {
-
   useEffect(() => {
     const formRegister = document.getElementById('register-form');
     formRegister.addEventListener('submit', function(e) {

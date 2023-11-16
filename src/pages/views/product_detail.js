@@ -1,5 +1,12 @@
-import "../../../style/product-detail.css"
-import {useState, useEffect, showSpinner, router, showMesssage, convertVND} from '../../utilities/lib'
+import "../../../style/product-detail.css";
+import {
+  useState,
+  useEffect,
+  showSpinner,
+  router,
+  showMesssage,
+  convertVND,
+} from "../../utilities/lib";
 import BestSelling from "../../components/detail/best_selling";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
@@ -10,77 +17,76 @@ import ItemTopping from "../../components/ItemTopping";
 import Comments from "../../components/detail/Comments";
 
 const ProductDetail = (slug) => {
-    const [product,setProduct]=useState({})
-    const [topping,setTopping]=useState([])
-    useEffect(function() {
-        showSpinner(true)
-        fetch('https://toco-backend.vercel.app/products/'+slug)
-        .then(function(res){
-            return res.json()
-        })
-        .then(function(data){
-            showSpinner(false)
-            setProduct(data.data)
-        })
+  const [product, setProduct] = useState({});
+  const [topping, setTopping] = useState([]);
+  useEffect(function () {
+    showSpinner(true);
+    fetch("https://toco-backend.vercel.app/products/" + slug)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        showSpinner(false);
+        setProduct(data.data);
+      });
 
-        showSpinner(true)
-        fetch('https://toco-backend.vercel.app/toppings')
-        .then(function(res){
-            return res.json()
-        })
-        .then(function(data){
-            // showSpinner(false)
-            setTopping(data.data)
-        })
-    }, [])
+    showSpinner(true);
+    fetch("https://toco-backend.vercel.app/toppings")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        // showSpinner(false)
+        setTopping(data.data);
+      });
+  }, []);
 
-    useEffect(() => {
-        const btnPre = document.querySelector('.btn-pre')
-        const btnNext = document.querySelector('.btn-next')
-        const inputQuantity = document.getElementById('detail-quantity')
-        const btnBuy = document.getElementById('btn-buy')
-        btnPre.addEventListener('click', () => {
-            if(Number(inputQuantity.value) === 1) {
-                return;
-            }
-            inputQuantity.value = Number(inputQuantity.value) - 1
-        })
-        btnNext.addEventListener('click', () => {
-            inputQuantity.value = Number(inputQuantity.value) + 1
-        })
+  useEffect(() => {
+    const btnPre = document.querySelector(".btn-pre");
+    const btnNext = document.querySelector(".btn-next");
+    const inputQuantity = document.getElementById("detail-quantity");
+    const btnBuy = document.getElementById("btn-buy");
+    btnPre.addEventListener("click", () => {
+      if (Number(inputQuantity.value) === 1) {
+        return;
+      }
+      inputQuantity.value = Number(inputQuantity.value) - 1;
+    });
+    btnNext.addEventListener("click", () => {
+      inputQuantity.value = Number(inputQuantity.value) + 1;
+    });
 
-        btnBuy.addEventListener('click', () => {
-            if(!localUserService.get().account) {
-                showMesssage(false, 'Vui lòng đăng nhập!');
-                return;
-            }
-            let listTopping = []
-            const inputTopping = document.querySelectorAll('input[name="topping"]');
-            for(let item of inputTopping) {
-                if(item.checked) {
-                    listTopping.push(item.value)
-                }
-            }
-            const newData = {
-                account: localUserService.get().account,
-                id_product: product._id,
-                quantity: Number(inputQuantity.value),
-                id_topping: listTopping
-            }
-            cartService.addToCart(newData)
-            .then((res) => {
-                router.navigate('/cart')
-                // console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    btnBuy.addEventListener("click", () => {
+      if (!localUserService.get().account) {
+        showMesssage(false, "Vui lòng đăng nhập!");
+        return;
+      }
+      let listTopping = [];
+      const inputTopping = document.querySelectorAll('input[name="topping"]');
+      for (let item of inputTopping) {
+        if (item.checked) {
+          listTopping.push(item.value);
+        }
+      }
+      const newData = {
+        account: localUserService.get().account,
+        id_product: product._id,
+        quantity: Number(inputQuantity.value),
+        id_topping: listTopping,
+      };
+      cartService
+        .addToCart(newData)
+        .then((res) => {
+          router.navigate("/cart");
+          // console.log(res);
         })
-    
-    })
-    
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  });
 
-return /*html*/` 
+  return /*html*/ ` 
     ${Header()}
     <div id="product-detail-page">
         <main class="container">
@@ -99,10 +105,11 @@ return /*html*/`
                     <div>
                         <p class="title-option">Thêm Topping:</p>
                         <div class="add-topping">
-                            ${topping.map((topping) => {
-                                return ItemTopping(topping)
-                                }).join('')
-                            }
+                            ${topping
+                              .map((topping) => {
+                                return ItemTopping(topping);
+                              })
+                              .join("")}
                         </div>
                     </div>
                     <div>
@@ -148,6 +155,6 @@ return /*html*/`
     </div>
     ${Footer()}
     ${Spinner()}
-    `
-}
-export default ProductDetail
+    `;
+};
+export default ProductDetail;

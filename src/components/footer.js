@@ -1,5 +1,5 @@
 const Footer = () => {
-    return /*html*/`
+  return /*html*/ `
     <footer id="footer">
         <div class="footer-top">
             <div class="footer-left">
@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
         </section>
     </footer>
-    `
-  }
-  
-  export default Footer
+    `;
+};
+
+export default Footer;
