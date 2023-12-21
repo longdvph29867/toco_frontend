@@ -26,6 +26,9 @@ export const adminService = {
   getProductDetail: (slug) => {
     return https.get(`/products/${slug}`);
   },
+  updateProduct: (id, data) => {
+    return https.put(`/products/${id}`, data);
+  },
   deleteProductDetail: (id) => {
     return https.delete(`/products/${id}`);
   },

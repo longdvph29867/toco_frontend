@@ -41,6 +41,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.error{
+  color: red;
+  font-size: 12px;
+}
 
 html {
   font-family: var(--font-family-sarabun);
@@ -1978,6 +1982,20 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+.checkbox_categories-hidden{
+ visibility: hidden;
+}
+.box-categories{
+  display: flex;
+  align-items: center;
+}
+.checkbox_categories{
+
+  margin-right: 5px;
+}
+label{
+  margin-bottom: 0;
+}
 .control-label{
   font-weight: 600;
   color: black;
@@ -2138,7 +2156,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-text {

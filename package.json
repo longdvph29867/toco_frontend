@@ -17,6 +17,8 @@
     "axios": "^1.5.1",
     "joi": "^17.11.0",
     "json-server": "^0.17.4",
+    "jquery": "^3.7.1",
+    "jquery-validation": "^1.20.0",
     "navigo": "^8.11.1",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^3.3.3"

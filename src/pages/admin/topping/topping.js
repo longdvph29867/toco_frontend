@@ -2,21 +2,27 @@ import { adminService } from "../../../service/adminService";
 import {
   router,
   showMesssage,
+  showSpinner,
   useEffect,
   useState,
 } from "../../../utilities/lib";
 
 const Toppings = () => {
   const [toppings, setToppings] = useState([]);
-  useEffect(() => {
+  const fetchData = () => {
+    showSpinner(true);
     adminService
       .getToppings()
       .then((response) => {
         setToppings(response.data.data);
+        showSpinner(false);
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   useEffect(() => {
     const btn_delete = document.querySelectorAll(".btn_delete");
@@ -25,11 +31,13 @@ const Toppings = () => {
         const cf = confirm(`Bạn chắc chắn muốn xóa topping này?`);
         if (cf) {
           const id = btn.dataset.id;
+          showSpinner(true);
           adminService
             .deleteTopping(id)
             .then((response) => {
-              showMesssage(true, response.data.message);
-              router.navigate("/admin/toppings");
+              showSpinner(false);
+              showMesssage(true, response.data.messgae);
+              fetchData();
             })
             .catch((error) => {
               showMesssage(false, error.message);

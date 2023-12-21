@@ -2,6 +2,7 @@ import { adminService } from "../../../service/adminService";
 import {
   router,
   showMesssage,
+  showSpinner,
   useEffect,
   useState,
 } from "../../../utilities/lib";
@@ -10,10 +11,12 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    showSpinner(true);
     adminService
       .getProducts()
       .then((reponse) => {
         setProducts(reponse.data.data);
+        showSpinner(false);
       })
       .catch((error) => {
         console.log(error);
@@ -27,9 +30,11 @@ const AdminProducts = () => {
         const cf = confirm("Bạn có chắc chắn muốn xóa");
         if (cf) {
           const id = btn.dataset.id;
+          showSpinner(true);
           adminService
             .deleteProductDetail(id)
             .then((response) => {
+              showSpinner(false);
               showMesssage(true, "Xóa thành công");
               router.navigate("/admin/products");
             })
@@ -57,7 +62,7 @@ const AdminProducts = () => {
             <div class="row element-button">
               <div class="col-sm-2">
                 <a class="btn btn-add btn-sm" href="/admin/products/add" title="Thêm"><i class="fas fa-plus"></i>
-                  Tạo mới nhân viên</a>
+                  Tạo mới sản phẩm</a>
               </div>
             </div>
     <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0"

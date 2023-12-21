@@ -1,16 +1,25 @@
 import { adminService } from "../../../service/adminService";
-import { showMesssage, useEffect, useState } from "../../../utilities/lib";
+import {
+  showMesssage,
+  showSpinner,
+  useEffect,
+  useState,
+} from "../../../utilities/lib";
 
 const User = () => {
   const [users, setUsers] = useState([]);
-
-  useEffect(() => {
+  const fetchData = () => {
+    showSpinner(true);
     adminService
       .getUsers()
       .then((res) => {
         setUsers(res.data.data);
+        showSpinner(false);
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   useEffect(() => {
     const btn_delete = document.querySelectorAll(".delete");
@@ -24,7 +33,7 @@ const User = () => {
             .deleteUsers(id)
             .then((res) => {
               showMesssage(true, "Xóa thành công");
-              window.location.reload();
+              fetchData();
             })
             .catch((err) => {
               console.log(err);

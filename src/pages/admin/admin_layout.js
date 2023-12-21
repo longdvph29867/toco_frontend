@@ -1,5 +1,6 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useEffect } from "../../utilities/lib";
+import Spinner from "@/components/spinner";
 
 export default function AdminLayout(component) {
   useEffect(() => {
@@ -87,8 +88,6 @@ export default function AdminLayout(component) {
   </div>
   <hr>
   <ul class="app-menu">
-    <li><a class="app-menu__item" href="/admin/dasboard"><i class="app-menu__icon fa-solid fa-chart-line"></i><span
-          class="app-menu__label">Bảng điều khiển</span></a></li>
     <li><a class="app-menu__item" href="/admin/categories"><i class="app-menu__icon fa-regular fa-rectangle-list"></i>
         <span class="app-menu__label">Quản lý danh mục</span></a></li>
     <li><a class="app-menu__item " href="/admin/users" ><i class="app-menu__icon fa-regular fa-id-card"></i><span
@@ -103,5 +102,6 @@ export default function AdminLayout(component) {
 </aside>
   ${component()}
   </div>
+  ${Spinner()}
     `;
 }

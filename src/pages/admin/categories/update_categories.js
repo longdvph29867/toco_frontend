@@ -1,51 +1,58 @@
+import $ from "jquery";
+import "jquery-validation";
+
 import { adminService } from "../../../service/adminService";
 import {
   router,
   showMesssage,
+  showSpinner,
   useEffect,
   useState,
 } from "../../../utilities/lib";
-import * as Joi from "joi";
 const UpdateCategories = (id) => {
   const [categories, setCategories] = useState({});
-  const scehma = Joi.object({
-    categoryName: Joi.string().required().min(3).messages({
-      "string.empty": "Vui lòng nhập tên danh mục",
-      "string.min": "Tên danh mục phải có ít nhất 3 ký tự",
-    }),
-  });
   useEffect(() => {
+    showSpinner(true);
     adminService
       .getCategoriesDetail(id)
       .then((reponse) => {
-        console.log(reponse.data.data);
         setCategories(reponse.data.data);
+        showSpinner(false);
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, []);
   useEffect(() => {
-    const form_cate = document.querySelector("#form-cate");
-    form_cate.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const categoryName = document.querySelector("#categoryName").value;
-      adminService
-        .updateCategories(id, { categoryName })
-        .then((response) => {
-          showMesssage(true, response.data.message);
-          router.navigate("/admin/categories");
-        })
-        .catch((error) => {
-          showMesssage(false, error.message);
-        });
+    $("#form-cate").validate({
+      rules: {
+        categoryName: { required: true },
+      },
+      messages: {
+        categoryName: "Vui lòng nhập Tên danh mục",
+      },
+      submitHandler: function (form) {
+        // Hành động khi form hợp lệ
+        const categoryName = $("#categoryName").val();
+        showSpinner(true);
+        adminService
+          .updateCategories(id, { categoryName })
+          .then((response) => {
+            showSpinner(false);
+            showMesssage(true, response.data.message);
+            router.navigate("/admin/categories");
+          })
+          .catch((error) => {
+            showMesssage(false, error.message);
+          });
+      },
     });
   });
   return `
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-        class="breadcrumb-item"><a href="/admin/categories">Danh sách danh mụ</a></li>
+        <li class="breadcrumb-item"><a href="/admin/categories">Danh sách danh mục</a></li>
         <li class="breadcrumb-item"><span>Cập nhật danh mục</span></li>
         </ul>
       </div>
@@ -61,7 +68,7 @@ const UpdateCategories = (id) => {
                 </div>
                 <div class="from-item">
                   <label class="control-label">Tên Danh mục</label>
-                  <input  id="categoryName" value="${
+                  <input name="categoryName" id="categoryName" value="${
                     categories.categoryName || ""
                   }" class="form-control" type="text">
                 </div>

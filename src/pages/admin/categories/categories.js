@@ -2,20 +2,26 @@ import { adminService } from "../../../service/adminService";
 import {
   router,
   showMesssage,
+  showSpinner,
   useEffect,
   useState,
 } from "../../../utilities/lib";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
-  useEffect(() => {
+  const fetchData = () => {
+    showSpinner(true);
     adminService
       .getCategories()
       .then((response) => {
         setCategories(response.data.data);
+        showSpinner(false);
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   useEffect(() => {
     const btn_delete = document.querySelectorAll(".btn_delete");
@@ -29,7 +35,7 @@ const Categories = () => {
             .deleteCategories(id)
             .then((response) => {
               showMesssage(true, response.data.message);
-              router.navigate("/admin/categories");
+              fetchData();
             })
             .catch((error) => {
               showMesssage(false, error.message);

@@ -1,27 +1,36 @@
+import $ from "jquery";
+import "jquery-validation";
 import { adminService } from "../../../service/adminService";
-import { router, showMesssage, useEffect } from "../../../utilities/lib";
-import * as Joi from "joi";
+import {
+  router,
+  showMesssage,
+  showSpinner,
+  useEffect,
+} from "../../../utilities/lib";
 const AddCategories = () => {
-  const scehma = Joi.object({
-    categoryName: Joi.string().required().min(3).messages({
-      "string.empty": "Vui lòng nhập tên danh mục",
-      "string.min": "Tên danh mục phải có ít nhất 3 ký tự",
-    }),
-  });
   useEffect(() => {
-    const form_cate = document.querySelector("#form-cate");
-    form_cate.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const categoryName = document.querySelector("#categoryName").value;
-      adminService
-        .postCategories({ categoryName })
-        .then((response) => {
-          showMesssage(true, response.data.message);
-          router.navigate("/admin/categories");
-        })
-        .catch((error) => {
-          showMesssage(false, error.message);
-        });
+    $("#form-cate").validate({
+      rules: {
+        categoryName: { required: true },
+      },
+      messages: {
+        categoryName: "Vui lòng nhập Tên danh mục",
+      },
+      submitHandler: function (form) {
+        // Hành động khi form hợp lệ
+        const categoryName = $("#categoryName").val();
+        showSpinner(true);
+        adminService
+          .postCategories({ categoryName })
+          .then((response) => {
+            showSpinner(false);
+            showMesssage(true, response.data.message);
+            router.navigate("/admin/categories");
+          })
+          .catch((error) => {
+            showMesssage(false, error.message);
+          });
+      },
     });
   });
   return `
@@ -44,7 +53,7 @@ const AddCategories = () => {
                 </div>
                 <div class="from-item">
                   <label class="control-label">Tên danh mục</label>
-                  <input  id="categoryName" class="form-control" type="text">
+                  <input name="categoryName" id="categoryName" class="form-control" type="text">
                 </div>
                 <div class="btn_form">
                   <button class="btn btn-save">Lưu lại</button>
