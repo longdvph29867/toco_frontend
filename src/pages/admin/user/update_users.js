@@ -1,3 +1,5 @@
+import $ from "jquery";
+import "jquery-validation";
 import { adminService } from "../../../service/adminService";
 import {
   router,
@@ -5,16 +7,13 @@ import {
   useEffect,
   useState,
 } from "../../../utilities/lib";
-import * as Joi from "joi";
 
 const UpdateUser = (id) => {
-  console.log(id);
   const [user, setUser] = useState({});
   useEffect(() => {
     adminService
       .getUserDetail(id)
       .then((res) => {
-        console.log(res.data.data);
         setUser(res.data.data);
       })
       .catch((err) => {
@@ -22,54 +21,39 @@ const UpdateUser = (id) => {
       });
   }, []);
 
-  const schemaUsers = Joi.object({
-    account: Joi.string().required().min(6).messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.min": "Tài khoản phải có ít nhất 6 ký tự!",
-    }),
-    fullName: Joi.string().required().messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.empty": "Vui lòng nhập tên tài khoản",
-    }),
-    phoneNumber: Joi.number().required().min(10).messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.min": "Không đúng định dạng số điện thoại",
-    }),
-    role: Joi.string().required().messages({
-      "string.empty": "Vui lòng chọn vai trò",
-    }),
-  });
-
   useEffect(() => {
-    const formUpdate = document.querySelector("#form-update");
-    formUpdate.onsubmit = (event) => {
-      event.preventDefault();
-      const formData = new FormData(formUpdate);
-      const account = formData.get("account");
-      const fullName = formData.get("fullName");
-      const phoneNumber = formData.get("phoneNumber");
-      const role = formData.get("role");
-      const { value, error } = schemaUsers.validate({
-        account,
-        fullName,
-        phoneNumber,
-        role,
-      });
-      console.log(error);
-      if (!error) {
+    $("#form-update").validate({
+      rules: {
+        account: { required: true },
+        fullName: { required: true },
+        phoneNumber: { required: true },
+        role: { required: true },
+      },
+      messages: {
+        account: "Vui lòng nhập Tên tài khoản",
+        fullName: "Vui lòng nhập Tên người dùng",
+        phoneNumber: "Vui lòng nhập Số điện thoại",
+        role: "Vui lòng chọn Chức vụ",
+      },
+      submitHandler: function (form) {
+        // Hành động khi form hợp lệ
+        const account = $("#account").val();
+        const fullName = $("#fullName").val();
+        const phoneNumber = $("#phoneNumber").val();
+        const role = $("#role").val();
         const password = user.password;
-        const data = { account, fullName, phoneNumber, role, password };
+        const formData = { account, fullName, phoneNumber, role, password };
         adminService
-          .updateUsers(id, data)
+          .updateUsers(id, formData)
           .then((res) => {
             showMesssage(true, res.data.message);
             router.navigate("/admin/users");
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            showMesssage(false, error.message);
           });
-      }
-    };
+      },
+    });
   });
   return `
     <main class="app-content">
@@ -89,27 +73,27 @@ const UpdateUser = (id) => {
                   <label class="control-label">Tên tài khoản</label>
                   <input value="${
                     user.account || ""
-                  }" name="account" class="form-control" type="text">
+                  }" id="account" name="account" class="form-control" type="text">
                 </div>
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên người dùng</label>
                   <input value="${
                     user.fullName || ""
-                  }" name="fullName" class="form-control" type="text">
+                  }" id="fullName" name="fullName" class="form-control" type="text">
                 </div>
                 <div class="form-group  col-md-3">
                   <label class="control-label">Số điện thoại</label>
                   <input value="${
                     user.phoneNumber || ""
-                  }" name="phoneNumber"  class="form-control" type="number">
+                  }" id="phoneNumber" name="phoneNumber"  class="form-control" type="number">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="exampleSelect1" class="control-label">Chức vụ</label>
-                  <select name="role" class="form-control" id="exampleSelect1">
+                  <select id="role" name="role" class="form-control" id="exampleSelect1">
                     <option value="" class="hiden_option">-- Chọn chức vụ --</option>
                     <option ${
-                      user.role == "người dùng" ? "selected" : ""
-                    } value="người dùng">Người dùng</option>
+                      user.role == "member" ? "selected" : ""
+                    } value="member">Người dùng</option>
                     <option ${
                       user.role == "admin" ? "selected" : ""
                     } value="admin">Admin</option>

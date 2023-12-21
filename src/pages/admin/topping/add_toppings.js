@@ -1,26 +1,26 @@
+import $ from "jquery";
+import "jquery-validation";
 import { adminService } from "../../../service/adminService";
 import { router, showMesssage, useEffect } from "../../../utilities/lib";
-import * as Joi from "joi";
+
 const AddTopping = () => {
-  const scehma = Joi.object({
-    toppingName: Joi.string().required().min(3).messages({
-      "string.empty": "Vui lòng nhập tên danh mục",
-      "string.min": "Tên danh mục phải có ít nhất 3 ký tự",
-    }),
-    toppingPrice: Joi.number().required().messages({
-      "string.empty": "Vui lòng nhập tên danh mục",
-    }),
-  });
   useEffect(() => {
-    const form = document.querySelector("#form-topping");
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const toppingName = formData.get("toppingName");
-      const toppingPrice = formData.get("toppingPrice");
-      const data = { toppingName, toppingPrice };
-      const { value, error } = scehma.validate(data);
-      if (!error) {
+    $("#form-topping").validate({
+      rules: {
+        toppingName: { required: true },
+        toppingPrice: { required: true, min: 1 },
+      },
+      messages: {
+        toppingName: "Vui lòng nhập Tên topping",
+        toppingPrice: {
+          required: "Vui lòng nhập Giá topping",
+          min: "Giá topping phải lớn hơn 0",
+        },
+      },
+      submitHandler: function (form) {
+        // Hành động khi form hợp lệ
+        const toppingName = $("#toppingName").val();
+        const toppingPrice = $("#toppingPrice").val();
         adminService
           .postToppings({ toppingName, toppingPrice })
           .then((response) => {
@@ -30,8 +30,8 @@ const AddTopping = () => {
           .catch((error) => {
             showMesssage(false, error.message);
           });
-      }
-    };
+      },
+    });
   });
   return `
     <main class="app-content">
@@ -49,11 +49,11 @@ const AddTopping = () => {
               <form class="form_cate" id="form-topping">
                 <div class="from-item">
                   <label class="control-label">Tên Topping</label>
-                  <input name="toppingName"  class="form-control" type="text" >
+                  <input name="toppingName" id="toppingName" class="form-control" type="text" >
                 </div>
                 <div class="from-item">
-                  <label class="control-label">Tên Topping</label>
-                  <input  name="toppingPrice" class="form-control" type="text">
+                  <label class="control-label">Giá Topping</label>
+                  <input type="number" name="toppingPrice" id="toppingPrice" class="form-control">
                 </div>
                 <div class="btn_form">
                   <button class="btn btn-save">Lưu lại</button>

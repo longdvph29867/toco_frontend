@@ -1,69 +1,54 @@
+import $ from "jquery";
+import "jquery-validation";
 import { adminService } from "../../../service/adminService";
 import { router, showMesssage, useEffect } from "../../../utilities/lib";
-import * as Joi from "joi";
 
 const AddUser = () => {
-  const schemaUsers = Joi.object({
-    account: Joi.string().required().min(6).messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.min": "Tài khoản phải có ít nhất 6 ký tự!",
-    }),
-    fullName: Joi.string().required().messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.empty": "Vui lòng nhập tên tài khoản",
-    }),
-    phoneNumber: Joi.number().required().min(10).messages({
-      "any.required": "Vui lòng nhập tên tài khoản",
-      "string.min": "Không đúng định dạng số điện thoại",
-    }),
-    password: Joi.string().required().min(6).max(32).messages({
-      "any.required": "Vui lòng nhập mật khẩu",
-      "string.min": "Mật khẩu ít nhất 6 ký tự!",
-    }),
-    confim_password: Joi.string()
-      .valid(Joi.ref("password"))
-      .required()
-      .messages({
-        "any.only": "Xác nhận mật khẩu phải giống với mật khẩu.",
-      }),
-    role: Joi.string().required().messages({
-      "string.empty": "Vui lòng chọn vai trò",
-    }),
-  });
-
   useEffect(() => {
-    const formAdd = document.querySelector("#form_add");
-    formAdd.onsubmit = (event) => {
-      event.preventDefault();
-      const formData = new FormData(formAdd);
-      const account = formData.get("account");
-      const fullName = formData.get("fullName");
-      const phoneNumber = formData.get("phoneNumber");
-      const role = formData.get("role");
-      const password = formData.get("password");
-      const confim_password = formData.get("confim_password");
-      const { value, error } = schemaUsers.validate({
-        account,
-        fullName,
-        phoneNumber,
-        role,
-        password,
-        confim_password,
-      });
-      console.log(error);
-      if (!error) {
-        const data = { account, fullName, phoneNumber, role, password };
+    $("#form_add").validate({
+      rules: {
+        account: { required: true },
+        fullName: { required: true },
+        phoneNumber: { required: true },
+        role: { required: true },
+        password: { required: true, minlength: 6 },
+        confim_password: { required: true, equalTo: "#password" },
+      },
+      messages: {
+        account: "Vui lòng nhập Tên tài khoản",
+        fullName: "Vui lòng nhập Tên người dùng",
+        phoneNumber: "Vui lòng nhập Số điện thoại",
+        role: "Vui lòng chọn Chức vụ",
+        password: {
+          minlength: "Mật khảu ít nhất 6 kí tự",
+          required: "Vui lòng nhập Mật khẩu",
+        },
+        confim_password: {
+          required: "Vui lòng nhập password",
+          equalTo: "Xác nhân mật khẩu không đúng",
+        },
+      },
+      submitHandler: function (form) {
+        // Hành động khi form hợp lệ
+        const account = $("#account").val();
+        const fullName = $("#fullName").val();
+        const phoneNumber = $("#phoneNumber").val();
+        const role = $("#role").val();
+        const password = $("#password").val();
+
+        const formData = { account, fullName, phoneNumber, role, password };
+        console.log(formData);
         adminService
-          .postUsers(data)
+          .postUsers(formData)
           .then((res) => {
             showMesssage(true, res.data.message);
             router.navigate("/admin/users");
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            showMesssage(false, error.message);
           });
-      }
-    };
+      },
+    });
   });
   return `
     <main class="app-content">
@@ -78,35 +63,35 @@ const AddUser = () => {
           <div class="tile">
             <h3 class="tile-title">Tạo mới tài khoản</h3>
             <div class="tile-body">
-              <form class="row" id="form_add" >
+              <form class="row" id="form_add" method="POST">
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên tài khoản</label>
-                  <input name="account" class="form-control" type="text">
+                  <input id="account" name="account" class="form-control" type="text">
                 </div>
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên người dùng</label>
-                  <input name="fullName" class="form-control" type="text">
+                  <input id="fullName" name="fullName" class="form-control" type="text">
                 </div>
                 <div class="form-group  col-md-3">
                   <label class="control-label">Số điện thoại</label>
-                  <input name="phoneNumber"  class="form-control" type="number">
+                  <input id="phoneNumber" name="phoneNumber"  class="form-control" type="number">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="exampleSelect1" class="control-label">Chức vụ</label>
-                  <select name="role" class="form-control" id="exampleSelect1">
+                  <label for="" class="control-label">Chức vụ</label>
+                  <select id="role" name="role" class="form-control">
                     <option value="" class="hiden_option">-- Chọn chức vụ --</option>
-                    <option value="người dùng">Người dùng</option>
+                    <option value="member">Người dùng</option>
                     <option value="admin">Admin</option>
                   </select>
                 </div>
                 
                 <div class="form-group  col-md-3">
                   <label class="control-label">Mật khẩu</label>
-                  <input name="password"  class="form-control" type="password">
+                  <input id="password" name="password"  class="form-control" type="password">
                 </div>
                 <div class="form-group  col-md-3">
                   <label class="control-label">Xác nhận mật khẩu</label>
-                  <input name="confim_password" class="form-control" type="password">
+                  <input id="confim_password" name="confim_password" class="form-control" type="password">
                 </div>
                 
                 <div class="form-group col-md-12">

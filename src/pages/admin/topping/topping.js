@@ -8,7 +8,7 @@ import {
 
 const Toppings = () => {
   const [toppings, setToppings] = useState([]);
-  useEffect(() => {
+  const fetchData = () => {
     adminService
       .getToppings()
       .then((response) => {
@@ -17,6 +17,9 @@ const Toppings = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   useEffect(() => {
     const btn_delete = document.querySelectorAll(".btn_delete");
@@ -28,8 +31,9 @@ const Toppings = () => {
           adminService
             .deleteTopping(id)
             .then((response) => {
-              showMesssage(true, response.data.message);
-              router.navigate("/admin/toppings");
+              console.log(response);
+              showMesssage(true, response.data.messgae);
+              fetchData();
             })
             .catch((error) => {
               showMesssage(false, error.message);
